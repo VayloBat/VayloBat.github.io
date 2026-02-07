@@ -1,6 +1,6 @@
 ---
 title: "THM - Pwn101 Writeup"
-date: 2026-02-07 17:00:00 +0000
+date: 2026-01-07 17:00:00 +0000
 categories: [Writeups, Pwn]
 tags: [buffer-overflow, thm, linux-exploitation]
 image:
