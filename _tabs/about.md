@@ -30,5 +30,3 @@ order: 4
 
 ---
 
-## 📊 GitHub Stats
-![Your Stats](https://github-readme-stats.vercel.app/api?username=VayloBat&show_icons=true&theme=tokyonight)
