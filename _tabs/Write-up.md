@@ -1,5 +1,6 @@
 ---
-layout: write-up
+layout: category
+title: Writeups
 icon: fas fa-terminal
-order: 1
+order: 2
 ---
