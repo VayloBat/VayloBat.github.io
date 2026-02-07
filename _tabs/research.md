@@ -1,5 +1,6 @@
 ---
-layout: research
+layout: tag
+title: research
 icon: fas fa-microscope
-order: 2
+order: 3
 ---
