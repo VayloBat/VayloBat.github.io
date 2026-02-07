@@ -1,5 +1,5 @@
 ---
-layout: categories
-icon: fas fa-stream
+layout: write-up
+icon: fas fa-sterminal
 order: 1
 ---
