@@ -5,11 +5,6 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-# 0xVaylo.bat 👋
-
-<p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&pause=1000&color=00FF00&center=true&vCenter=true&width=435&lines=Binary+Exploitation;Pwn+Specialist;Reverse+Engineering;CTF+Player" alt="Typing SVG" />
-</p>
 
 ---
 
