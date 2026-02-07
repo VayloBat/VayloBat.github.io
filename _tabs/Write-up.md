@@ -1,5 +1,5 @@
 ---
 layout: write-up
-icon: fas fa-sterminal
+icon: fas fa-terminal
 order: 1
 ---
