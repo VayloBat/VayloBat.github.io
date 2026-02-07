@@ -5,6 +5,6 @@ categories: [Writeups]
 tags: [pwn, picoctf]
 ---
 
-Full writeup available on my GitHub.
+Full writeup is available on my GitHub repository.
 
 ### 🔗 [Click here for Writeup](https://github.com/VayloBat/My_pwn_journey/tree/main/picoctf%2Finput_injection_1)
