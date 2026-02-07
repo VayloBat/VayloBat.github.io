@@ -1,5 +1,5 @@
 ---
-layout: tags
-icon: fas fa-tags
+layout: Research
+icon: fas fa-microscope
 order: 2
 ---
