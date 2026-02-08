@@ -1,37 +1,113 @@
 ---
 layout: page
-# غيرنا layout من home إلى page لنجبره على قراءة النص
+# اترك العنوان فارغاً ليكون التصميم مخصصاً بالكامل
 ---
 
+<style>
+  /* تحسين الخطوط والألوان العامة */
+  .hero-section {
+    background: #0d0d0d;
+    border: 1px solid #1a1a1a;
+    border-left: 4px solid #00FF00;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+  }
 
-<div style="border: 1px dashed #00FF00; padding: 25px; border-radius: 15px; background-color: rgba(0, 255, 0, 0.05); text-align: center; margin-bottom: 30px;">
-  
-  <h1 style="color: #00FF00; margin-top: 0;">0xVaylo.bat 👋</h1>
+  .terminal-text {
+    font-family: 'Fira Code', monospace;
+    color: #ffffff; /* الكتابة بيضاء كما طلبت */
+    margin: 0;
+  }
 
-  <p align="center">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&pause=1000&color=00FF00&center=true&vCenter=true&width=435&lines=Binary+Exploitation;Pwn+Specialist;Reverse+Engineering;CTF+Player" alt="Typing SVG" />
+  .accent-green { color: #00FF00; }
+  .text-gray { color: #888; font-size: 0.9em; }
+
+  /* تنسيق قسم المقالات الأخيرة */
+  .section-title {
+    font-family: 'Fira Code', monospace;
+    color: #ffffff;
+    border-bottom: 1px solid #1a1a1a;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .home-post-card {
+    display: flex;
+    align-items: center;
+    background: #161616;
+    border: 1px solid #222;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    text-decoration: none !important;
+    transition: 0.2s;
+  }
+
+  .home-post-card:hover {
+    border-color: #00FF00;
+    background: #1a1a1a;
+  }
+
+  .square-num {
+    width: 30px;
+    height: 30px;
+    background: #000;
+    border: 1px solid #333;
+    color: #00FF00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8em;
+    margin-right: 15px;
+    border-radius: 4px;
+  }
+
+  .post-info h3 {
+    margin: 0;
+    font-size: 1.05em;
+    color: #ffffff;
+    font-family: 'Fira Code', monospace;
+  }
+</style>
+
+<div class="hero-section">
+  <h1 class="terminal-text"><span class="accent-green">></span> VAYLO.SYS <span class="text-gray">_</span></h1>
+  <p style="color: #ccc; line-height: 1.6; margin-top: 15px;">
+    Security Researcher & Exploit Developer. Specialized in low-level memory corruption and reverse engineering. 
   </p>
-
-  <p style="font-size: 1.2em; color: #abb2bf; line-height: 1.6;">
-    Welcome to my digital laboratory. This space is dedicated to the art of <b>Binary Exploitation</b> and <b>Security Research</b>. Here, I document my journey through complex memory corruptions and CTF challenges.
-  </p>
-
-  <div style="margin-top: 20px;">
-    <code style="color: #e06c75;">status:</code> <span style="color: #98c379;">Analyzing buffers... 🔍</span>
+  <div style="margin-top: 20px; font-family: 'Fira Code', monospace; font-size: 0.85em;">
+    <span class="accent-green">[STATUS]</span> <span style="color: #eee;">Active in Lab</span> 
+    <span style="margin: 0 10px; color: #333;">|</span>
+    <span class="accent-green">[TARGET]</span> <span style="color: #eee;">Linux x64/pwn</span>
   </div>
-
 </div>
 
+<h2 class="section-title">
+  <i class="fas fa-microchip accent-green"></i> Latest Research
+</h2>
 
-<h2 style="color: #00FF00; font-family: 'Fira Code', monospace; margin-top: 40px;">📂 Recent Lab Notes</h2>
-<div style="display: flex; flex-direction: column; gap: 10px;">
-  {% for post in site.posts limit:5 %}
-    <a href="{{ post.url | relative_url }}" style="text-decoration: none; color: #abb2bf; background: #1a1a1a; padding: 15px; border-radius: 8px; border: 1px solid #333; transition: 0.3s;">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span style="color: #00FF00; font-weight: bold;">> {{ post.title }}</span>
-        <span style="font-size: 0.8em; color: #555;">{{ post.date | date: "%b %d, %Y" }}</span>
+<div class="posts-container">
+  {% for post in site.posts limit:3 %}
+    <a href="{{ post.url | relative_url }}" class="home-post-card">
+      <div class="square-num">0{{ forloop.index }}</div>
+      <div class="post-info">
+        <h3>{{ post.title }}</h3>
+        <span class="text-gray">{{ post.date | date: "%B %d, %Y" }}</span>
       </div>
+      <i class="fas fa-chevron-right" style="margin-left: auto; color: #333; font-size: 0.8em;"></i>
     </a>
+  {% else %}
+    <p class="text-gray" style="font-style: italic;">No logs found in the database...</p>
   {% endfor %}
 </div>
 
+<div style="text-align: center; margin-top: 20px;">
+  <a href="{{ '/tabs/archives/' | relative_url }}" style="color: #00FF00; font-family: 'Fira Code', monospace; text-decoration: none; font-size: 0.9em;">
+    [ VIEW_ALL_RECORDS ]
+  </a>
+</div>
