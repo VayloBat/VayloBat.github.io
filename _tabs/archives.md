@@ -5,78 +5,54 @@ icon: fas fa-archive
 order: 10
 ---
 
+<div style="padding: 20px 0; border-bottom: 1px solid #222; margin-bottom: 40px;">
+  <h1 style="color: #ffffff; font-size: 2.2em; font-family: 'Inter', sans-serif; font-weight: 800; margin: 0;">
+    Records <span style="color: #00FF00;">.</span>
+  </h1>
+  <p style="color: #666; font-size: 1em; margin-top: 10px; font-family: 'Inter', sans-serif;">
+    A chronological index of research, logs, and technical notes.
+  </p>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 5px;">
+  {% for post in site.posts %}
+    <a href="{{ post.url | relative_url }}" style="text-decoration: none !important; color: inherit; display: block;">
+      <div class="archive-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 10px; border-bottom: 1px solid #111; transition: 0.2s;">
+        
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <span style="color: #333; font-family: monospace; font-size: 0.85em; width: 40px;">0{{ forloop.index }}</span>
+          <span class="archive-title" style="color: #ffffff; font-size: 1.05em; font-family: 'Inter', sans-serif; font-weight: 500;">
+            {{ post.title }}
+          </span>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 20px;">
+          <span style="color: #444; font-size: 0.85em; font-family: monospace; letter-spacing: 1px;">
+            {{ post.date | date: "%d %b %Y" | uppercase }}
+          </span>
+          <i class="fas fa-arrow-right" style="color: #1a1a1a; font-size: 0.8em;"></i>
+        </div>
+
+      </div>
+    </a>
+  {% endfor %}
+</div>
+
 <style>
-  /* تحسين الخط العام */
-  .post-title-link {
-    font-family: 'Fira Code', 'Courier New', monospace;
-    font-size: 1.1em;
+  /* تأثيرات فخمة وبسيطة */
+  .archive-item:hover {
+    background: #080808;
+    border-bottom-color: #222;
+    padding-left: 20px !important;
+  }
+  
+  .archive-item:hover .archive-title {
     color: #00FF00 !important;
-    text-decoration: none !important;
+  }
+
+  .archive-item:hover i {
+    color: #00FF00 !important;
+    transform: translateX(5px);
     transition: 0.3s;
-  }
-
-  /* تصميم المربع الخاص بالأيقونة */
-  .square-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 35px;
-    height: 35px;
-    background-color: #1a1a1a;
-    border: 1px solid #00FF00;
-    border-radius: 4px; /* زوايا مربعة حادة قليلاً */
-    color: #00FF00;
-    margin-right: 15px;
-    font-size: 0.9em;
-    box-shadow: 0 0 5px rgba(0, 255, 0, 0.2);
-  }
-
-  /* حاوية الخبر/المقال */
-  .post-item {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    margin-bottom: 12px;
-    background: rgba(26, 26, 26, 0.5);
-    border: 1px solid #333;
-    border-radius: 8px;
-    transition: 0.3s;
-  }
-
-  .post-item:hover {
-    border-color: #00FF00;
-    background: rgba(0, 255, 0, 0.05);
-    transform: translateX(8px);
-  }
-
-  .post-date {
-    margin-left: auto;
-    font-family: 'Fira Code', monospace;
-    color: #555;
-    font-size: 0.85em;
   }
 </style>
-
-<div style="margin-top: 20px;">
-  <p style="color: #888; font-family: 'Fira Code', monospace;">[+] Listing all compromised nodes (posts)...</p>
-</div>
-
-<div style="margin-top: 30px;">
-  {% if site.posts.size > 0 %}
-    {% for post in site.posts %}
-      <div class="post-item">
-        <div class="square-icon">
-          <i class="fas fa-terminal"></i>
-        </div>
-        <a href="{{ post.url | relative_url }}" class="post-title-link">
-          {{ post.title }}
-        </a>
-        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-      </div>
-    {% endfor %}
-  {% else %}
-    <div style="text-align: center; padding: 40px; border: 1px dashed #444; border-radius: 10px;">
-      <p style="color: #ff4444; font-family: 'Fira Code', monospace;">[!] System empty. No logs detected.</p>
-    </div>
-  {% endif %}
-</div>
