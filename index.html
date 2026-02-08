@@ -2,41 +2,38 @@
 layout: page
 ---
 
-<p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&pause=1000&color=00FF00&center=true&vCenter=true&width=435&lines=Binary+Exploitation;Pwn+Specialist;Reverse+Engineering;CTF+Player" alt="Typing SVG" />
-</p>
-
 <div style="padding: 40px 0; border-bottom: 1px solid #222; margin-bottom: 40px;">
-  <h1 style="color: #ffffff; font-size: 2.5em; margin: 0; font-family: 'Inter', sans-serif; font-weight: 800;">
+  <h1 style="color: #ffffff; font-size: 2.8em; margin: 0; font-family: 'Inter', sans-serif; font-weight: 800; letter-spacing: -1px;">
     Vaylo <span style="color: #00FF00;">.</span>
   </h1>
-  <p style="font-size: 1.2em; color: #888; margin-top: 10px; max-width: 600px; line-height: 1.6;">
-    Security Researcher & Developer. Specialized in building secure systems and analyzing binary vulnerabilities.
-  </p>
   
-  <div style="display: flex; gap: 15px; margin-top: 25px;">
-    <a href="https://github.com/VayloBat" style="color: #ffffff; background: #111; padding: 8px 20px; border-radius: 5px; border: 1px solid #333; text-decoration: none; font-size: 0.9em;">GitHub</a>
-    <a href="mailto:your-email@example.com" style="color: #ffffff; background: #111; padding: 8px 20px; border-radius: 5px; border: 1px solid #333; text-decoration: none; font-size: 0.9em;">Contact Me</a>
+  <p style="font-size: 1.15em; color: #888; margin-top: 25px; max-width: 700px; line-height: 1.8; font-family: 'Inter', sans-serif;">
+    Welcome to my digital laboratory. This space is dedicated to the art of <b style="color: #eee;">Binary Exploitation</b> and <b style="color: #eee;">Security Research</b>. Here, I document my journey through complex memory corruptions and CTF challenges.
+  </p>
+
+  <div style="display: flex; gap: 15px; margin-top: 30px;">
+    <a href="https://github.com/VayloBat" style="color: #ffffff; background: #111; padding: 10px 22px; border-radius: 6px; border: 1px solid #333; text-decoration: none; font-size: 0.9em; font-weight: 500;">GitHub</a>
+    <div style="display: flex; align-items: center; background: #0a0a0a; padding: 10px 20px; border-radius: 6px; border: 1px solid #1a1a1a; font-family: monospace; font-size: 0.85em;">
+      <span style="color: #e06c75; margin-right: 8px;">status:</span> 
+      <span style="color: #98c379;">Analyzing buffers... 🔍</span>
+    </div>
   </div>
 </div>
 
-<h2 style="color: #ffffff; font-size: 1.5em; margin-bottom: 25px; font-family: 'Inter', sans-serif;">Featured Work:</h2>
+<h2 style="color: #ffffff; font-size: 1.6em; margin-bottom: 30px; font-family: 'Inter', sans-serif; font-weight: 700;">Featured Work:</h2>
 
 <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
   {% for post in site.posts limit:5 %}
-    <a href="{{ post.url | relative_url }}" style="text-decoration: none !important;">
-      <div style="background: #0f0f0f; padding: 25px; border-radius: 12px; border: 1px solid #1a1a1a; transition: 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+    <a href="{{ post.url | relative_url }}" style="text-decoration: none !important; color: inherit;">
+      <div class="work-card" style="background: #0f0f0f; padding: 28px; border-radius: 12px; border: 1px solid #1a1a1a; transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); position: relative;">
         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
           <div style="flex: 1;">
-            <h3 style="color: #ffffff; margin: 0 0 10px 0; font-size: 1.25em;">{{ post.title }}</h3>
-            <p style="color: #666; font-size: 0.95em; margin: 0; line-height: 1.5;">
-              {{ post.excerpt | strip_html | truncate: 120 }}
+            <h3 class="card-title" style="color: #ffffff; margin: 0 0 12px 0; font-size: 1.3em; font-weight: 600;">{{ post.title }}</h3>
+            <p style="color: #666; font-size: 0.95em; margin: 0; line-height: 1.6;">
+              {{ post.excerpt | strip_html | truncate: 140 }}
             </p>
           </div>
-          <span style="color: #444; font-size: 0.8em; margin-left: 20px; font-family: monospace;">{{ post.date | date: "%Y" }}</span>
-        </div>
-        <div style="margin-top: 15px; display: flex; gap: 8px;">
-          <span style="font-size: 0.75em; color: #00FF00; background: rgba(0,255,0,0.05); padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(0,255,0,0.1);">Research</span>
+          <span style="color: #333; font-size: 0.85em; font-family: monospace; font-weight: bold;">{{ post.date | date: "%Y" }}</span>
         </div>
       </div>
     </a>
@@ -44,13 +41,17 @@ layout: page
 </div>
 
 <style>
-  /* تأثير التفاعل الاحترافي */
-  a div:hover {
-    border-color: #333 !important;
-    background: #141414 !important;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+  /* تعديل التأثير: تكبير فقط بدون تغيير لون النص للأخضر */
+  .work-card:hover {
+    border-color: #444 !important; /* تفتيح بسيط جداً للحدود لمجرد التفاعل */
+    background: #121212 !important;
+    transform: scale(1.02); /* تكبير بسيط وناعم */
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.7) !important;
+    z-index: 10;
   }
-  h3 { transition: color 0.3s; }
-  a:hover h3 { color: #00FF00 !important; }
+
+  /* نضمن بقاء العنوان أبيض عند الـ Hover */
+  .work-card:hover .card-title {
+    color: #ffffff !important;
+  }
 </style>
