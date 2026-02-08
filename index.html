@@ -1,56 +1,37 @@
 ---
 layout: page
+# غيرنا layout من home إلى page لنجبره على قراءة النص
 ---
 
-<style>
-  .hero-box {
-    background: #0d0d0d;
-    border-left: 4px solid #00FF00;
-    padding: 20px;
-    margin-bottom: 30px;
-    border-radius: 4px;
-  }
-  .white-text { color: #ffffff !important; font-family: 'Fira Code', monospace; }
-  .green-text { color: #00FF00 !important; }
-  .gray-text { color: #666; font-size: 0.9em; }
 
-  .post-entry {
-    display: flex;
-    align-items: center;
-    background: #161616;
-    border: 1px solid #222;
-    padding: 12px;
-    margin-bottom: 10px;
-    text-decoration: none !important;
-    border-radius: 6px;
-  }
-  .post-entry:hover { border-color: #00FF00; }
+<div style="border: 1px dashed #00FF00; padding: 25px; border-radius: 15px; background-color: rgba(0, 255, 0, 0.05); text-align: center; margin-bottom: 30px;">
   
-  .num-box {
-    width: 30px; height: 30px; border: 1px solid #333;
-    display: flex; align-items: center; justify-content: center;
-    margin-right: 15px; color: #00FF00; font-family: monospace;
-  }
-</style>
+  <h1 style="color: #00FF00; margin-top: 0;">0xVaylo.bat 👋</h1>
 
-<div class="hero-box">
-  <h1 class="white-text" style="margin:0;"><span class="green-text">></span> VAYLO.SYS</h1>
-  <p style="color: #bbb; margin-top: 10px;">Security Researcher & Exploit Developer.</p>
+  <p align="center">
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&pause=1000&color=00FF00&center=true&vCenter=true&width=435&lines=Binary+Exploitation;Pwn+Specialist;Reverse+Engineering;CTF+Player" alt="Typing SVG" />
+  </p>
+
+  <p style="font-size: 1.2em; color: #abb2bf; line-height: 1.6;">
+    Welcome to my digital laboratory. This space is dedicated to the art of <b>Binary Exploitation</b> and <b>Security Research</b>. Here, I document my journey through complex memory corruptions and CTF challenges.
+  </p>
+
+  <div style="margin-top: 20px;">
+    <code style="color: #e06c75;">status:</code> <span style="color: #98c379;">Analyzing buffers... 🔍</span>
+  </div>
+
 </div>
 
-<h3 class="white-text" style="border-bottom: 1px solid #222; padding-bottom: 10px;">Latest Research</h3>
 
-<div style="margin-top: 20px;">
+<h2 style="color: #00FF00; font-family: 'Fira Code', monospace; margin-top: 40px;">📂 Recent Lab Notes</h2>
+<div style="display: flex; flex-direction: column; gap: 10px;">
   {% for post in site.posts limit:5 %}
-    <a href="{{ post.url | relative_url }}" class="post-entry">
-      <div class="num-box">0{{ forloop.index }}</div>
-      <div>
-        <div class="white-text" style="font-weight: bold;">{{ post.title }}</div>
-        <div class="gray-text">{{ post.date | date: "%Y-%m-%d" }}</div>
+    <a href="{{ post.url | relative_url }}" style="text-decoration: none; color: #abb2bf; background: #1a1a1a; padding: 15px; border-radius: 8px; border: 1px solid #333; transition: 0.3s;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="color: #00FF00; font-weight: bold;">> {{ post.title }}</span>
+        <span style="font-size: 0.8em; color: #555;">{{ post.date | date: "%b %d, %Y" }}</span>
       </div>
     </a>
-  {% else %}
-    <p class="gray-text">No posts found.</p>
   {% endfor %}
 </div>
 
