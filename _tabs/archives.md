@@ -3,8 +3,8 @@ layout: post
 title: "Welcome to Vaylo's Pwn Lab"
 date: 2026-02-07 10:00:00 +0100
 published: true
-icon: fas fa-user-ninja
-order: 1
+icon: fas fa-archive
+order: 10
 ---
 
 <div style="margin-top: 20px;">
