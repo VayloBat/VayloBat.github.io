@@ -1,6 +1,8 @@
 ---
 layout: page
 title: About
+icon: fas fa-user-ninja
+order: 1
 ---
 
 <div style="text-align: center; margin-bottom: 30px;">
