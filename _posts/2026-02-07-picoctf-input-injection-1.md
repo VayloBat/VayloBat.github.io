@@ -21,7 +21,7 @@ so the exploit lives in its own file. Check it out here: [exploit.py](./exploit.
 ### Proof of Concept (PoC):
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="{{ '/assets/img/screenshote.jpg' | relative_url }}" alt="Exploit Screenshot" style="border-radius: 8px; border: 1px solid #333; width: 100%; max-width: 800px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+  <img src="{{ '/assets/img/screenshoteinput.jpg' | relative_url }}" alt="Exploit Screenshot" style="border-radius: 8px; border: 1px solid #333; width: 100%; max-width: 800px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
 </div>
 
 ### Result:
