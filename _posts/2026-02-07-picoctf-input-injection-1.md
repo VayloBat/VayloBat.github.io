@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "picoctf-buffer-overflow-0"
+title: "picoctf-input-injection-1"
 date: 2026-02-07 11:00:00 +0100
 ---
 
@@ -18,6 +18,11 @@ By sending more than 10 bytes of data, I can "spill over" from the first buffer 
 
 ### Exploit :
 so the exploit lives in its own file. Check it out here: 
+<p style="text-align: right; margin-top: -15px;">
+  <a href="{{ '/assets/img/exploit.py' | relative_url }}" download style="color: #00FF00; font-size: 0.8em; text-decoration: none; font-family: monospace;">
+    [ Download Raw File ]
+  </a>
+</p> 
 ### Proof of Concept (PoC):
 
 <div style="text-align: center; margin: 20px 0;">
