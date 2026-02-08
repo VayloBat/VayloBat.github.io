@@ -1,11 +1,8 @@
 ---
 layout: page
-# غيرنا layout من home إلى page لنجبره على قراءة النص
 ---
 
-
 <div style="border: 1px dashed #00FF00; padding: 25px; border-radius: 15px; background-color: rgba(0, 255, 0, 0.05); text-align: center; margin-bottom: 30px;">
-  
   <h1 style="color: #00FF00; margin-top: 0;">0xVaylo.bat 👋</h1>
 
   <p align="center">
@@ -19,19 +16,35 @@ layout: page
   <div style="margin-top: 20px;">
     <code style="color: #e06c75;">status:</code> <span style="color: #98c379;">Analyzing buffers... 🔍</span>
   </div>
-
 </div>
 
+<h2 style="color: #ffffff; font-family: 'Fira Code', monospace; margin-top: 40px; display: flex; align-items: center; gap: 10px;">
+  📂 Recent Lab Notes
+</h2>
 
-<h2 style="color: #00FF00; font-family: 'Fira Code', monospace; margin-top: 40px;">📂 Recent Lab Notes</h2>
-<div style="display: flex; flex-direction: column; gap: 10px;">
+<div style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
   {% for post in site.posts limit:5 %}
-    <a href="{{ post.url | relative_url }}" style="text-decoration: none; color: #abb2bf; background: #1a1a1a; padding: 15px; border-radius: 8px; border: 1px solid #333; transition: 0.3s;">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span style="color: #00FF00; font-weight: bold;">> {{ post.title }}</span>
-        <span style="font-size: 0.8em; color: #555;">{{ post.date | date: "%b %d, %Y" }}</span>
+    <a href="{{ post.url | relative_url }}" style="text-decoration: none !important;">
+      <div style="background: #161616; padding: 18px; border-radius: 10px; border: 1px solid #333; box-shadow: 0 4px 8px rgba(0,0,0,0.5); border-left: 4px solid #00FF00; transition: 0.3s;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="color: #ffffff; font-weight: bold; font-family: 'Fira Code', monospace; font-size: 1.1em;">
+            <span style="color: #00FF00; margin-right: 5px;">></span> {{ post.title }}
+          </span>
+          <span style="font-size: 0.85em; color: #555; font-family: monospace;">{{ post.date | date: "%b %d, %Y" }}</span>
+        </div>
       </div>
     </a>
+  {% else %}
+    <p style="color: #666; font-style: italic; font-family: 'Fira Code', monospace;">[!] No records found in the lab.</p>
   {% endfor %}
 </div>
 
+<style>
+  /* تأثير البروز عند تمرير الماوس */
+  a div:hover {
+    border-color: #00FF00 !important;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 255, 0, 0.1) !important;
+    background: #1d1d1d !important;
+  }
+</style>
