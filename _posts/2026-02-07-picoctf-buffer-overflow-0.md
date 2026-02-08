@@ -15,8 +15,6 @@ Instead of manual entry, I used a Python one-liner to pipe 600 characters into t
 **Command:**
 python3 -c 'print("A"*600)' | nc saturn.picoctf.net 64825
 
-### Proof of Concept (PoC)
-![Exploit Screenshot](screenshote.jpg)
 
 ### Result
 The program crashed as expected and printed the flag.
