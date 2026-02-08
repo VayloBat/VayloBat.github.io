@@ -68,7 +68,7 @@ order: 1
 </div>
 ## 🚩 Platform: picoCTF
 <div class="card-container">
-  <a href="https://github.com/VayloBat/My_pwn_journey/tree/main/picoctf%2Finput_injection_1" target="_blank" class="pwn-card">
+  <a href="{{ '/posts/picoctf-input-injection-1/'| relative_url }}" target="_blank" class="pwn-card">
     <div><h3 style="color: #00FF00; margin: 0;">Input Injection 1</h3><p style="font-size: 0.85em; color: #bbb;">Command injection and filter bypassing.</p></div>
     <div style="margin-top: 15px;"><span class="tag">#picoCTF</span></div>
   </a>
