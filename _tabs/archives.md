@@ -1,8 +1,8 @@
 ---
-layout: page
-title: Archives
-icon: fas fa-archive
-order: 2
+layout: post
+title: "Welcome to Vaylo's Pwn Lab"
+date: 2026-02-07 10:00:00 +0100
+published: true
 ---
 
 <div style="margin-top: 20px;">
