@@ -23,6 +23,7 @@ so the exploit lives in its own file. Check it out here:
     [ Download Raw File ]
   </a>
 </p> 
+
 ### Proof of Concept (PoC):
 
 <div style="text-align: center; margin: 20px 0;">
