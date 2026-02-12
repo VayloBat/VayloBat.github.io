@@ -1,5 +1,6 @@
 ---
-title: "Dissecting Forgotten Devices: A Deep Dive into ZTE Modem Architecture (Part 1)"
+layout: post
+title: "dissecting forgotten devices: a deep dive into ZTE dodem architecture (part 1)"
 date: 2026-02-12 10:00:00 +0000
 categories: [Security Research, Embedded Systems]
 tags: [ZTE, IoT, Reverse Engineering, Nmap, Reconnaissance]
