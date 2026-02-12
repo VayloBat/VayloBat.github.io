@@ -5,29 +5,25 @@ icon: fas fa-microscope
 order: 3
 ---
 ### My recearch:
-<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding: 20px;">
-
-  <a href="/posts/embedded-insecurity-zte-modem-part-1/" style="text-decoration: none; color: inherit;">
-    <div style="width: 350px; background: #1a1a1a; border: 2px solid #39FF14; border-radius: 15px; padding: 15px; box-shadow: 0 0 15px rgba(57, 255, 20, 0.2); transition: 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-      
-      <div style="display: flex; gap: 15px;">
-        <img src="/assets/img/p.jpg" style="width: 100px; height: 100px; border-radius: 10px; object-fit: cover; border: 1px solid #333;">
+<div class="row">
+  <div class="col-12 col-sm-6 col-lg-4 mb-4">
+    <a href="/posts/embedded-insecurity-zte-modem-part-1/" class="card-wrapper" style="text-decoration: none;">
+      <div style="background: #0d0d0d; border: 2px solid #39FF14; border-radius: 12px; padding: 15px; height: 100%; position: relative; overflow: hidden;">
         
-        <div style="flex: 1;">
-          <h3 style="margin: 0; color: #39FF14; font-size: 1.1rem; line-height: 1.4;">Embedded Insecurity: ZTE Modem Architecture</h3>
-          <p style="font-size: 0.8rem; color: #ccc; margin: 10px 0;">Deep dive into legacy attack surfaces and firmware fossils.</p>
+        <div style="display: flex; gap: 12px; align-items: start;">
+          <img src="/assets/img/1000076591.jpg" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover;">
+          
+          <div>
+            <h3 style="color: #39FF14; font-size: 1rem; margin: 0; font-weight: bold;">Embedded Insecurity</h3>
+            <p style="color: #ccc; font-size: 0.8rem; margin: 5px 0;">ZTE Modem Architecture Analysis (Part 1)</p>
+          </div>
         </div>
-      </div>
 
-      <div style="margin-top: 15px; font-family: monospace; font-size: 0.75rem;">
-        <div style="color: #888;">Date: 2026-02-12</div>
-        <div style="margin-top: 5px;">
-          <span style="background: #39FF14; color: black; padding: 2px 8px; border-radius: 5px; font-weight: bold;">#ZTE</span>
-          <span style="background: #333; color: #39FF14; padding: 2px 8px; border-radius: 5px; margin-left: 5px;">#Hardware</span>
+        <div style="margin-top: 15px;">
+          <span style="border: 1px solid #39FF14; color: #39FF14; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-family: monospace;">#ZTE_Research</span>
         </div>
+
       </div>
-
-    </div>
-  </a>
-
+    </a>
+  </div>
 </div>
