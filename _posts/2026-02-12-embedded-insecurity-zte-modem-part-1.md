@@ -1,8 +1,12 @@
 ---
 layout: post
-title: "dissecting-forgotten-devices:a-deep-dive-into-zte-dodem-architecture-part-1"
+title: "dissecting-forgotten-devices:a-deep-dive-into-ZTE-dodem-architecture-part-1"
 date: 2026-02-12 10:00:00 +0100
-
+categories: [Security Research, Embedded Systems]
+tags: [ZTE, IoT, Reverse Engineering, Nmap, Reconnaissance]
+image:
+  path: /assets/img/p.jpg
+  alt: VayloBat Research Lab Setup
 ---
 
 ## 0x01: The Motivation
