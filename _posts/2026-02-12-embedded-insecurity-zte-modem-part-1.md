@@ -2,9 +2,10 @@
 layout: post
 title: "dissecting-forgotten-devices:a-deep-dive-into-zte-dodem-architecture-part-1"
 date: 2026-02-12 10:00:00 +0100
-categories: [Security Research, Embedded Systems]
-tags: [ZTE, IoT, Reverse Engineering, Nmap, Reconnaissance]
-
+<div class="img-wrapper">
+  <img src="/assets/img/p.png" alt="VayloBat Research Lab Setup" class="shadow rounded-10 w-100">
+  <p class="text-center font-italic">The technical output clearly indicates a MediaTek-based architecture running services from a bygone era.</p>
+</div>
 ---
 
 ## 0x01: The Motivation
