@@ -7,3 +7,8 @@
 <meta name="msapplication-TileColor" content="#000000">
 <meta name="msapplication-config" content="/browserconfig.xml">
 <meta name="theme-color" content="#00ff00">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
+</script>
