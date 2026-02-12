@@ -1,10 +1,11 @@
 ---
 layout: page
 title: Research
+icon: fas fa-microscope
 ---
 
 <div class="card-wrapper" style="padding: 20px;">
-  <a href="/posts/dissecting-forgotten-devices-a-deep-dive-into-zte-modem-architecture-part-1/" style="text-decoration: none;">
+  <a href="/posts/embedded-insecurity-zte-modem/" style="text-decoration: none;">
     <div style="background: #0d0d0d; border: 2px solid #39FF14; border-radius: 12px; padding: 15px; display: flex; gap: 15px; align-items: center; box-shadow: 0 0 10px rgba(57, 255, 20, 0.1);">
       
       <img src="/assets/img/p.jpg" alt="ZTE Research Thumbnail" style="width: 90px; height: 90px; border-radius: 8px; object-fit: cover;">
