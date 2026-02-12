@@ -2,12 +2,15 @@
 layout: post
 title: "dissecting-forgotten-devices:a-deep-dive-into-zte-dodem-architecture-part-1"
 date: 2026-02-12 10:00:00 +0100
+image:
+  path: /assets/img/p.jpg
+  alt: VayloBat Research Lab Setup
+  
+---
 <div class="img-wrapper">
   <img src="/assets/img/p.png" alt="VayloBat Research Lab Setup" class="shadow rounded-10 w-100">
   <p class="text-center font-italic">The technical output clearly indicates a MediaTek-based architecture running services from a bygone era.</p>
 </div>
----
-
 ## 0x01: The Motivation
 Why would a security researcher bother with a legacy device? The answer is simple: **Embedded systems don't die; they are just forgotten.** These devices, still powering many networks today, contain "software fossils" that provide a perfect environment for understanding vulnerability development from the ground up. In this series, I will dismantle a ZTE 3G Modem step-by-step—not just to find a bug, but to understand the mindset of the developer who wrote the code a decade ago.
 
