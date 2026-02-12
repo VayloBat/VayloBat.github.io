@@ -3,27 +3,18 @@ layout: page
 title: Research
 ---
 
-### 🛡️ Security Research & Writeups
-
-<div class="card-wrapper">
-  <div class="card mb-4" style="border: 2px solid #39FF14; background: #0d0d0d; border-radius: 12px;">
-    <div class="card-body d-flex align-items-center">
-      <img src="/assets/img/p.jpg" style="width: 100px; height: 100px; border-radius: 10px; object-fit: cover; margin-right: 20px;">
+<div class="card-wrapper" style="padding: 20px;">
+  <a href="/posts/dissecting-forgotten-devices-a-deep-dive-into-zte-modem-architecture-part-1/" style="text-decoration: none;">
+    <div style="background: #0d0d0d; border: 2px solid #39FF14; border-radius: 12px; padding: 15px; display: flex; gap: 15px; align-items: center; box-shadow: 0 0 10px rgba(57, 255, 20, 0.1);">
+      
+      <img src="/assets/img/p.jpg" alt="ZTE Research Thumbnail" style="width: 90px; height: 90px; border-radius: 8px; object-fit: cover;">
       
       <div>
-        <h3 class="card-title text-success" style="color: #39FF14 !important; margin-bottom: 5px;">
-          <a href="/posts/dissecting-forgotten-devices-zte-modem-part-1/" style="color: #39FF14; text-decoration: none;">
-            Embedded Insecurity: ZTE Modem Architecture
-          </a>
-        </h3>
-        <p class="card-text text-muted" style="font-size: 0.9rem;">
-          Deep dive into legacy attack surfaces and firmware fossils of ZTE 3G devices.
-        </p>
-        <div class="tags">
-          <span class="badge badge-outline-success" style="border-color: #39FF14; color: #39FF14;">#ZTE</span>
-          <span class="badge badge-dark" style="background: #333; margin-left: 5px;">#IoT</span>
-        </div>
+        <h3 style="color: #39FF14; font-size: 1.1rem; margin: 0;">Embedded Insecurity</h3>
+        <p style="color: #ccc; font-size: 0.85rem; margin: 5px 0;">ZTE Modem Architecture Analysis (Part 1)</p>
+        <span style="border: 1px solid #39FF14; color: #39FF14; padding: 1px 6px; border-radius: 4px; font-size: 0.7rem;">#Research</span>
       </div>
+      
     </div>
-  </div>
+  </a>
 </div>
