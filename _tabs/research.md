@@ -6,39 +6,54 @@ order: 1
 ---
 
 
-<div class="row">
-  {% assign my_post = site.posts | where: "title", "ZTE-Modem-Research" | first %}
+<style>
+  .research-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .res-card {
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 12px;
+    background: #1a1a1a;
+    transition: all 0.3s ease;
+    border-left: 4px solid #00FF00;
+    text-decoration: none !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .res-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.1);
+    border-color: #00FF00;
+  }
+  .res-title {
+    color: #00FF00;
+    font-family: 'Fira Code', monospace;
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+  }
+  .res-desc {
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+</style>
+
+<div class="research-container">
   
-  {% if my_post %}
-  <div class="col-12 col-md-8 mb-4">
-    <a href="{{ my_post.url | relative_url }}" style="text-decoration: none !important; display: block;">
-      <div style="background: #0d0d0d; border: 2px solid #39FF14; border-radius: 12px; padding: 20px; transition: 0.3s; box-shadow: 0 0 15px rgba(57,255,20,0.2);" 
-           onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 0 25px rgba(57,255,20,0.5)';" 
-           onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 15px rgba(57,255,20,0.2)';" >
-        
-        <div style="display: flex; gap: 20px; align-items: center;">
-          <img src="{{ '/assets/img/p.jpg' | relative_url }}" alt="Research" style="width: 100px; height: 100px; border-radius: 10px; object-fit: cover; border: 1px solid #333;">
-          
-          <div style="flex: 1;">
-            <h3 style="color: #39FF14 !important; margin: 0; font-family: 'Courier New', Courier, monospace; font-weight: bold;">
-              ZTE MODEM RESEARCH
-            </h3>
-            <p style="color: #ccc; font-size: 0.9rem; margin: 8px 0;">
-              Exploitation & Hardware Analysis (Part 1)
-            </p>
-            
-            <div style="margin-top: 10px;">
-               <span style="background: #39FF14; color: #000; padding: 2px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: bold;">READ WRITEUP</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </a>
-  </div>
-  {% else %}
-    <div style="color: #ff4444; border: 1px dashed #ff4444; padding: 15px; text-align: center; border-radius: 10px;">
-       ⚠️ تأكد أن عنوان المقال داخل الملف هو: <br>
-       <strong>title: ZTE-Modem-Research</strong>
+  <a href="{{ '/posts/embedded-insecurity-zte-modem/' | relative_url }}" class="res-card">
+    <h3 class="res-title">🛡️ ZTE Modem Research</h3>
+    <p class="res-desc">
+      Dissecting Forgotten Devices: A Deep Dive Into ZTE Modem Architecture Analysis (Part 1).
+    </p>
+    <div style="margin-top: auto; padding-top: 15px;">
+      <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#Hardware</span>
+      <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#Exploitation</span>
     </div>
-  {% endif %}
+  </a>
+
 </div>
