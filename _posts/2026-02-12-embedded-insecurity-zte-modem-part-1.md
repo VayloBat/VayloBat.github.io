@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "dissecting forgotten devices: a deep dive into zte dodem architecture (part 1)"
-date: 2026-02-12 10:00:00 +0000
+title: "dissecting forgotten devices: a deep dive into ZTE dodem architecture (part 1)"
+date: 2026-02-12 10:00:00 +0100
 categories: [Security Research, Embedded Systems]
 tags: [ZTE, IoT, Reverse Engineering, Nmap, Reconnaissance]
 image:
@@ -57,3 +57,4 @@ Current Phase: 01 (Reconnaissance & Mapping)
 Confidence Level: High
 Next Target: Firmware Binwalk & Extraction
 Estimated Risk: Critical (Due to outdated service versions)
+```
