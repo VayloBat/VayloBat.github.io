@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "dissecting forgotten devices: a deep dive into ZTE dodem architecture (part 1)"
+title: "dissecting-forgotten-devices:a-deep-dive-into-ZTE-dodem-architecture-part-1"
 date: 2026-02-12 10:00:00 +0100
 
 ---
