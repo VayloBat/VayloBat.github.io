@@ -2,7 +2,6 @@
 layout: post
 title: "Dissecting-Forgotten-Devices:A-Deep-Dive-Into-ZTE-Dodem-Architecture-Part-1"
 date: 2026-02-12 10:00:00 +0100
-categories: [research]
 
 ---
 ## 0x01: The Motivation
