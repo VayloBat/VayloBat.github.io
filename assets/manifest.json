@@ -1,0 +1,21 @@
+{
+  "name": "VayloBat",
+  "short_name": "VayloBat",
+  "description": "Binary Exploitation & Security Research",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a2e",
+  "theme_color": "#00ff00",
+  "icons": [
+    {
+      "src": "/assets/img/favicons/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/favicons/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
