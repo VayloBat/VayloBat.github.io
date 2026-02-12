@@ -32,7 +32,7 @@ Using `nmap` with precise parameters, I performed a full port scan and service f
 I didn't stop at port scanning; I wanted to see how the device reacts to raw requests. By analyzing the HTTP headers using `curl`:
 
 <div class="img-wrapper">
-  <img src="/assets/img/p02.png" alt="Curl Header Analysis" class="shadow rounded-10 w-100">
+  <img src="/assets/img/p03.png" alt="Curl Header Analysis" class="shadow rounded-10 w-100">
   <p class="text-center font-italic">Notice the system date is set to 1970. This confirms we are dealing with a "Raw Environment" that has likely never seen a security patch.</p>
 </div>
 
