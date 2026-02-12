@@ -40,17 +40,3 @@ Based on the gathered intelligence, I have formulated the following **Attack Vec
 * **Vector A (Static Analysis):** Firmware acquisition and extraction to hunt for hidden CGI scripts and logic flaws in the management interface.
 * **Vector B (Fuzzing):** Sending malformed inputs to the DNS service to test memory stability and boundary conditions.
 
----
-
-## 0x05: The Research Status
-
-<div class="img-wrapper">
-  <img src="/assets/img/p03.jpg" alt="Research Workflow" class="shadow rounded-10 w-75 mx-auto d-block">
-</div>
-
-```yaml
-Current Phase: 01 (Reconnaissance & Mapping)
-Confidence Level: High
-Next Target: Firmware Binwalk & Extraction
-Estimated Risk: Critical (Due to outdated service versions)
-```
