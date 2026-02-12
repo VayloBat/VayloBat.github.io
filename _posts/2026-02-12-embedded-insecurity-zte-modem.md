@@ -19,7 +19,7 @@ The operating environment for this analysis is **Arch Linux**, chosen for its gr
 The first step in any hardware analysis is mapping the digital entry points. Leveraging the power of **Arch** and its up-to-date toolchain, I performed a deep scan using `nmap` to identify active services and their respective versions.
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="/assets/img/nmap_result.png" alt="Nmap Scan Result" style="width: 85%; border-radius: 10px; border: 1px solid #39FF14; box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);">
+  <img src="/assets/img/p01.png" alt="Nmap Scan Result" style="width: 85%; border-radius: 10px; border: 1px solid #39FF14; box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);">
   <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">Figure 1: Service fingerprinting using Nmap, identifying GoAhead and Dnsmasq.</p>
 </div>
 
@@ -31,7 +31,7 @@ The first step in any hardware analysis is mapping the digital entry points. Lev
 I moved beyond TCP to analyze **UDP** services, specifically port **53** (DNS), utilizing the flexibility of networking tools on Arch.
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="/assets/img/dns_nmap.png" alt="DNS UDP Scan" style="width: 85%; border-radius: 10px; border: 1px solid #39FF14; box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);">
+  <img src="/assets/img/p02.png" alt="DNS UDP Scan" style="width: 85%; border-radius: 10px; border: 1px solid #39FF14; box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);">
   <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">Figure 2: Advanced DNS port scanning via UDP using Nmap scripts.</p>
 </div>
 
@@ -44,7 +44,7 @@ I moved beyond TCP to analyze **UDP** services, specifically port **53** (DNS), 
 Interacting with the web server via `curl` revealed a fascinating "Time Travel" anomaly in the HTTP headers.
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="/assets/img/curl_result.png" alt="Curl Header Analysis" style="width: 85%; border-radius: 10px; border: 1px solid #39FF14; box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);">
+  <img src="/assets/img/p03.png" alt="Curl Header Analysis" style="width: 85%; border-radius: 10px; border: 1px solid #39FF14; box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);">
   <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">Figure 3: Analysis of HTTP headers revealing the 1970 timestamp.</p>
 </div>
 
