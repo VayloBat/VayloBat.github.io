@@ -1,5 +1,5 @@
 ---
-layout: tag
+layout: page
 title: research
 icon: fas fa-microscope
 order: 3
@@ -49,7 +49,7 @@ order: 3
 ## My research:
 <div class="card-container">
   <a href="{{ '/posts/2026-02-12-embedded-insecurity-zte-modem-part-1/'| relative_url }}" target="_blank" class="pwn-card">
-    <div><h3 style="color: #00FF00; margin: 0;">Input Injection 1</h3><p style="font-size: 0.85em; color: #bbb;">Command injection and filter bypassing.</p></div>
+    <div><h3 style="color: #00FF00; margin: 0;">embedded-insecurity-zte-modem-part-1</h3><p style="font-size: 0.85em; color: #bbb;">Command injection and filter bypassing.</p></div>
     <div style="margin-top: 15px;"><span class="tag">#picoCTF</span></div>
   </a>
 </div>
