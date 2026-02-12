@@ -1,29 +1,29 @@
 ---
 layout: page
-title: research
-icon: fas fa-microscope
-order: 3
+title: Research
 ---
-### My recearch:
-<div class="row">
-  <div class="col-12 col-sm-6 col-lg-4 mb-4">
-    <a href="/posts/embedded-insecurity-zte-modem-part-1/" class="card-wrapper" style="text-decoration: none;">
-      <div style="background: #0d0d0d; border: 2px solid #39FF14; border-radius: 12px; padding: 15px; height: 100%; position: relative; overflow: hidden;">
-        
-        <div style="display: flex; gap: 12px; align-items: start;">
-          <img src="/assets/img/1000076591.jpg" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover;">
-          
-          <div>
-            <h3 style="color: #39FF14; font-size: 1rem; margin: 0; font-weight: bold;">Embedded Insecurity</h3>
-            <p style="color: #ccc; font-size: 0.8rem; margin: 5px 0;">ZTE Modem Architecture Analysis (Part 1)</p>
-          </div>
-        </div>
 
-        <div style="margin-top: 15px;">
-          <span style="border: 1px solid #39FF14; color: #39FF14; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-family: monospace;">#ZTE_Research</span>
-        </div>
+### 🛡️ Security Research & Writeups
 
+<div class="card-wrapper">
+  <div class="card mb-4" style="border: 2px solid #39FF14; background: #0d0d0d; border-radius: 12px;">
+    <div class="card-body d-flex align-items-center">
+      <img src="/assets/img/p.jpg" style="width: 100px; height: 100px; border-radius: 10px; object-fit: cover; margin-right: 20px;">
+      
+      <div>
+        <h3 class="card-title text-success" style="color: #39FF14 !important; margin-bottom: 5px;">
+          <a href="/posts/dissecting-forgotten-devices-zte-modem-part-1/" style="color: #39FF14; text-decoration: none;">
+            Embedded Insecurity: ZTE Modem Architecture
+          </a>
+        </h3>
+        <p class="card-text text-muted" style="font-size: 0.9rem;">
+          Deep dive into legacy attack surfaces and firmware fossils of ZTE 3G devices.
+        </p>
+        <div class="tags">
+          <span class="badge badge-outline-success" style="border-color: #39FF14; color: #39FF14;">#ZTE</span>
+          <span class="badge badge-dark" style="background: #333; margin-left: 5px;">#IoT</span>
+        </div>
       </div>
-    </a>
+    </div>
   </div>
 </div>
