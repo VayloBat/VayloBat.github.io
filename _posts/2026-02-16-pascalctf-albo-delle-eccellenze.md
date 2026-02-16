@@ -1,3 +1,10 @@
+---
+layout: post
+title: "2026 02 16 pascalctf albo delle eccellenze"
+date: 2026-02-16 12:00:00 +0100
+---
+
+
 # Albo delle Eccellenze (Writeup)
 
 This challenge was tagged as Reverse, but honestly, it was a pretty straightforward Pwn.
