@@ -5,7 +5,6 @@ date: 2026-02-11 12:00:00 +0100
 ---
 
 
-# Albo delle Eccellenze (Writeup)
 
 This challenge was tagged as Reverse, but honestly, it was a pretty straightforward Pwn.
 
