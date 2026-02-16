@@ -58,7 +58,7 @@ order: 1
     <div style="margin-top: 15px;"><span class="tag">#PascalCTF</span></div>
   </a>
 
-  <a href="https://github.com/VayloBat/write-up_ctf_online/tree/main/PascalCTF%202026%20Write-up%20(Pwn)%2FAlbo%20delle%20Eccellenze" target="_blank" class="pwn-card">
+  <a href="{{ '/posts/pascalctf-albo-delle-eccellenze/'| relative_url }}" target="_blank" class="pwn-card">
     <div>
       <h3 style="color: #00FF00; margin: 0;">Albo delle Eccellenze</h3>
       <p style="font-size: 0.85em; color: #bbb;">Advanced exploitation walkthrough for PascalCTF.</p>
