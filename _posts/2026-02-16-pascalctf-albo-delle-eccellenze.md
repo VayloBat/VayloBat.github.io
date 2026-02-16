@@ -31,3 +31,22 @@ python3 -c 'print("A"*600)' | nc albo.ctf.pascalctf.it 7004
   <img src="{{ '/assets/img/screenshotreverse.png' | relative_url }}" alt="Exploit Screenshot" style="border-radius: 8px; border: 1px solid #333; width: 100%; max-width: 800px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
 </div>
 
+
+---
+
+<div style="margin-top: 50px; padding: 20px; border: 1px solid #1a1a1a; border-radius: 10px; background: #0a0a0a; display: flex; align-items: center; justify-content: space-between;">
+  <div>
+    <h4 style="margin: 0; color: #ffffff; font-size: 1.1em;">Full Writeup & Files</h4>
+    <p style="margin: 5px 0 0 0; color: #666; font-size: 0.9em;">View the exploit code and notes on GitHub.</p>
+  </div>
+  
+  <a href="https://github.com/VayloBat/write-up_ctf_online/tree/main/PascalCTF%202026%20Write-up%20(Pwn)/Albo%20delle%20Eccellenze" target="_blank" style="text-decoration: none !important;">
+    <div style="display: flex; align-items: center; gap: 10px; background: #ffffff; color: #000000; padding: 10px 20px; border-radius: 6px; font-weight: 600; font-size: 0.9em; transition: 0.3s;" onmouseover="this.style.background='#00FF00'" onmouseout="this.style.background='#ffffff'">
+      <i class="fab fa-github" style="font-size: 1.2em;"></i>
+      View on GitHub
+    </div>
+  </a>
+</div>
+
+
+
