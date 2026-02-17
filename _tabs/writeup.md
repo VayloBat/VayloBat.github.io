@@ -50,7 +50,7 @@ order: 1
 
 ## 🌐 Online CTFs (Live Events)
 <div class="card-container">
-  <a href="{{ '/posts/PascalCTF2026-Malta-Nightlife/'| relative_url }}" target="_blank" class="pwn-card">
+  <a href="{{ '/posts/pascalctf2026-malta-nightlife/'| relative_url }}" target="_blank" class="pwn-card">
     <div>
       <h3 style="color: #00FF00; margin: 0;">Malta Nightlife</h3>
       <p style="font-size: 0.85em; color: #bbb;">PascalCTF 2026 - Pwn Challenge Analysis.</p>
