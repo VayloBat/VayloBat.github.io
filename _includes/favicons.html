@@ -7,3 +7,20 @@
 <meta name="msapplication-TileColor" content="#000000">
 <meta name="msapplication-config" content="/browserconfig.xml">
 <meta name="theme-color" content="#00ff00">
+<style>
+  #lock-btn {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 9999;
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0.15;
+    transition: opacity 0.3s;
+    font-size: 20px;
+    text-decoration: none;
+  }
+  #lock-btn:hover { opacity: 1; }
+</style>
+<a id="lock-btn" href="/bat-console/" title="">🔒</a>
