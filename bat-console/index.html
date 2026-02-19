@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VAYLO OS | Ultimate Console</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root {
+            --neon: #00ff41;
+            --snow: #f5f5f7;
+            --silver: #a1a1a6;
+            --bg: #000000;
+            --card: #121212;
+            --border: #222;
+        }
+
+        body {
+            background: var(--bg); color: var(--snow);
+            font-family: -apple-system, system-ui, sans-serif;
+            margin: 0; display: flex; flex-direction: column; height: 100vh;
+        }
+
+        /* Top Header */
+        header {
+            padding: 15px 20px; background: var(--card);
+            border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-weight: 800; letter-spacing: 2px; color: var(--snow); }
+        .logo span { color: var(--neon); }
+
+        /* Tabs */
+        .tab-wrapper { display: flex; background: #080808; border-bottom: 1px solid var(--border); }
+        .tab { 
+            flex: 1; padding: 12px; text-align: center; font-size: 12px; 
+            cursor: pointer; color: var(--silver); transition: 0.3s;
+            text-transform: uppercase; font-weight: bold;
+        }
+        .tab.active { color: var(--snow); border-bottom: 2px solid var(--snow); background: #111; }
+
+        /* Main Content */
+        .content-area { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
+        .panel { display: none; padding: 20px; flex: 1; }
+        .panel.active { display: block; }
+
+        /* Inputs */
+        input, select, textarea {
+            width: 100%; background: #161617; border: 1px solid var(--border);
+            color: white; padding: 12px; border-radius: 8px; margin-bottom: 15px;
+            font-size: 16px; box-sizing: border-box; outline: none;
+        }
+        input:focus { border-color: var(--silver); }
+
+        /* Editor Specific */
+        textarea { font-family: 'Fira Code', monospace; line-height: 1.6; min-height: 300px; }
+        .toolbar { display: flex; gap: 8px; margin-bottom: 10px; overflow-x: auto; padding-bottom: 5px; }
+        .tool-btn { 
+            background: #222; color: var(--silver); border: 1px solid var(--border);
+            padding: 6px 12px; border-radius: 5px; font-size: 12px; cursor: pointer;
+            white-space: nowrap;
+        }
+        .tool-btn:hover { color: var(--snow); }
+
+        /* Buttons */
+        .btn-main {
+            background: var(--snow); color: black; border: none;
+            padding: 15px; width: 100%; font-weight: bold; border-radius: 8px;
+            cursor: pointer; text-transform: uppercase; margin-top: 10px;
+        }
+        .btn-main:hover { background: var(--neon); }
+
+        /* Preview */
+        #preview { line-height: 1.6; }
+        #preview h1, #preview h2 { color: var(--snow); border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        #preview pre { background: #111; padding: 15px; border-radius: 8px; border: 1px solid var(--border); overflow-x: auto; }
+        #preview code { color: var(--neon); }
+
+        /* PC Layout Adjustments */
+        @media (min-width: 1024px) {
+            .content-area { flex-direction: row; }
+            .panel { display: block !important; border-right: 1px solid var(--border); flex: 1; }
+            .tab-wrapper, .mobile-only { display: none; }
+            #config-panel { max-width: 300px; }
+        }
+
+        /* ====== NEW FEATURES ====== */
+
+        /* Toast */
+        #toast {
+            position: fixed; bottom: 20px; right: 20px;
+            background: var(--card); border: 1px solid var(--neon);
+            color: var(--neon); padding: 10px 18px; border-radius: 8px;
+            font-size: 12px; font-weight: bold; letter-spacing: 1px;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 9999;
+        }
+        #toast.show { opacity: 1; }
+        #toast.err { border-color: #ff4444; color: #ff4444; }
+
+        /* Word counter */
+        #word-counter {
+            font-size: 11px; color: var(--silver);
+            text-align: right; margin-top: -10px; margin-bottom: 10px;
+        }
+
+        /* Status badge */
+        #deploy-badge {
+            font-size: 10px; padding: 3px 10px; border-radius: 20px;
+            font-weight: bold; letter-spacing: 1px;
+            background: #1a1a1a; color: var(--silver);
+        }
+        #deploy-badge.loading { background: rgba(255,184,0,0.15); color: #ffb800; }
+        #deploy-badge.success { background: rgba(0,255,65,0.15); color: var(--neon); }
+        #deploy-badge.error   { background: rgba(255,68,68,0.15); color: #ff4444; }
+
+        /* Clock */
+        #clock { font-size: 10px; color: var(--silver); letter-spacing: 1px; }
+
+        /* Tags */
+        #tags-wrapper {
+            display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+            background: #161617; border: 1px solid var(--border);
+            border-radius: 8px; padding: 8px; margin-bottom: 15px; min-height: 44px;
+        }
+        .tag-chip {
+            background: #222; border: 1px solid var(--border);
+            color: var(--snow); padding: 2px 10px; border-radius: 20px;
+            font-size: 12px; display: flex; align-items: center; gap: 6px;
+        }
+        .tag-chip button { background: none; border: none; color: var(--silver); cursor: pointer; font-size: 14px; padding: 0; }
+        #tag-input {
+            background: transparent; border: none; color: white;
+            font-size: 13px; outline: none; min-width: 80px;
+            margin-bottom: 0; padding: 4px; width: auto; flex: 1;
+        }
+
+        /* Modal */
+        #modal-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.88); z-index: 9998;
+            align-items: center; justify-content: center;
+        }
+        #modal-overlay.show { display: flex; }
+        #modal-box {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 28px 24px;
+            max-width: 320px; width: 90%; text-align: center;
+        }
+        #modal-box h4 { margin-bottom: 10px; font-size: 15px; letter-spacing: 2px; }
+        #modal-box p { font-size: 12px; color: var(--silver); margin-bottom: 22px; }
+        .modal-btns { display: flex; gap: 10px; }
+        .modal-btns button { flex: 1; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 13px; border: none; text-transform: uppercase; letter-spacing: 1px; }
+        #modal-confirm { background: var(--neon); color: black; }
+        #modal-cancel { background: #222; color: var(--snow); }
+
+        /* Drafts & Posts list */
+        .list-item {
+            background: #161617; border: 1px solid var(--border);
+            border-radius: 8px; padding: 12px 14px; margin-bottom: 8px;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: border-color 0.2s;
+        }
+        .list-item:hover { border-color: #333; }
+        .item-title { font-size: 13px; font-weight: bold; cursor: pointer; }
+        .item-meta { font-size: 10px; color: var(--silver); margin-top: 3px; }
+        .item-actions { display: flex; gap: 6px; flex-shrink: 0; }
+        .act-btn {
+            background: #222; border: 1px solid var(--border);
+            color: var(--silver); padding: 5px 10px; border-radius: 5px;
+            font-size: 11px; cursor: pointer;
+        }
+        .act-btn:hover { color: var(--snow); }
+        .act-btn.del:hover { color: #ff4444; border-color: #ff4444; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+
+        /* LOGIN SCREEN */
+        #login-screen {
+            position: fixed; inset: 0; background: var(--bg);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 99999;
+        }
+        #login-box {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 40px 32px; width: 90%; max-width: 360px;
+        }
+        #login-box .logo {
+            font-size: 22px; margin-bottom: 6px; display: block;
+        }
+        #login-box .sub {
+            font-size: 11px; color: var(--silver); letter-spacing: 2px;
+            margin-bottom: 30px; display: block;
+        }
+        #login-box input {
+            margin-bottom: 12px; font-size: 14px;
+        }
+        #login-box input:focus { border-color: var(--neon); }
+        #login-btn {
+            background: var(--snow); color: black; border: none;
+            padding: 14px; width: 100%; font-weight: bold; border-radius: 8px;
+            cursor: pointer; text-transform: uppercase; letter-spacing: 2px;
+            font-size: 13px; margin-top: 4px; transition: background 0.2s;
+        }
+        #login-btn:hover { background: var(--neon); }
+        #login-error {
+            font-size: 11px; color: #ff4444; text-align: center;
+            margin-top: 12px; display: none; letter-spacing: 1px;
+        }
+        #app-wrapper { display: none; flex-direction: column; height: 100vh; }
+    </style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen">
+    <div id="login-box">
+        <span class="logo">VAYLO <span style="color:var(--neon)">OS</span></span>
+        <span class="sub">ADMIN ACCESS REQUIRED</span>
+        <input type="text" id="login-user" placeholder="Username" autocomplete="off" onkeydown="if(event.key==='Enter')doLogin()">
+        <input type="password" id="login-pass" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()">
+        <button id="login-btn" onclick="doLogin()">Access Console</button>
+        <div id="login-error">⚠ Invalid credentials</div>
+    </div>
+</div>
+
+<!-- APP WRAPPER -->
+<div id="app-wrapper" style="display:none; flex-direction:column; height:100vh;">
+
+<header>
+    <div class="logo">VAYLO <span>OS</span></div>
+    <div style="display:flex; align-items:center; gap:12px;">
+        <span id="clock"></span>
+        <span id="deploy-badge">IDLE</span>
+        <div style="font-size: 10px; color: var(--silver);">BUILD 4.0.1 Stable</div>
+    </div>
+</header>
+
+<div class="tab-wrapper">
+    <div class="tab active" onclick="showTab(0)">Editor</div>
+    <div class="tab" onclick="showTab(1)">Preview</div>
+    <div class="tab" onclick="showTab(2)">Config</div>
+    <div class="tab" onclick="showTab(3)">Drafts</div>
+    <div class="tab" onclick="showTab(4)">Posts</div>
+</div>
+
+<div class="content-area">
+
+    <!-- EDITOR -->
+    <div id="editor-panel" class="panel active">
+        <input type="text" id="post-title" placeholder="Post Title..."
+               style="font-size:22px; font-weight:bold; background:transparent; border-radius:0; border-bottom:2px solid var(--border);"
+               oninput="sync()">
+
+        <!-- Tags -->
+        <div id="tags-wrapper">
+            <input type="text" id="tag-input" placeholder="Add tag + Enter...">
+        </div>
+
+        <div class="toolbar">
+            <button class="tool-btn" onclick="insert('# ')">H1</button>
+            <button class="tool-btn" onclick="insert('## ')">H2</button>
+            <button class="tool-btn" onclick="insert('### ')">H3</button>
+            <button class="tool-btn" onclick="insert('**','**')">Bold</button>
+            <button class="tool-btn" onclick="insert('*','*')">Italic</button>
+            <button class="tool-btn" onclick="insert('`','`')">Inline</button>
+            <button class="tool-btn" onclick="insert('\n```python\n','\n```')">Code</button>
+            <button class="tool-btn" onclick="insert('![img](',')')">Link Img</button>
+            <button class="tool-btn" onclick="insert('> ')">Quote</button>
+            <button class="tool-btn" onclick="insert('- ')">List</button>
+            <button class="tool-btn" onclick="insert('\n---\n')">Divider</button>
+            <button class="tool-btn" onclick="saveDraft()" style="color:var(--neon); border-color:#1a3a1a;">💾 Draft</button>
+        </div>
+
+        <textarea id="main-editor" placeholder="Write your content..." oninput="sync()"></textarea>
+        <div id="word-counter">0 words · 0 chars</div>
+
+        <button class="btn-main" onclick="confirmDeploy()">Execute Deployment</button>
+    </div>
+
+    <!-- PREVIEW -->
+    <div id="preview-panel" class="panel">
+        <h3 style="font-size:14px; color:var(--silver)">LIVE PREVIEW</h3>
+        <div id="preview"></div>
+    </div>
+
+    <!-- CONFIG -->
+    <div id="config-panel" class="panel">
+        <h3 style="font-size:14px; color:var(--silver)">SYSTEM CONFIG</h3>
+        <input type="password" id="gh-token" placeholder="GitHub Token (ghp_...)">
+        <input type="text" id="gh-repo" placeholder="username/repository">
+        <select id="gh-folder">
+            <option value="_posts">/_posts (default)</option>
+        </select>
+        <button class="tool-btn" style="width:100%; padding:10px; margin-bottom:20px;" onclick="saveConfig()">Save Config</button>
+
+        <h3 style="font-size:14px; color:var(--silver); margin-top:10px;">MEDIA UPLOAD</h3>
+        <input type="file" id="file-input" accept="image/*,video/*,.gif">
+        <button class="tool-btn" style="width:100%; padding:10px" onclick="uploadFile()">Upload to Repo</button>
+        <div id="upload-status" style="font-size:11px; margin-top:8px; color:var(--neon)"></div>
+    </div>
+
+    <!-- DRAFTS -->
+    <div id="drafts-panel" class="panel">
+        <h3 style="font-size:14px; color:var(--silver); margin-bottom:15px;">SAVED DRAFTS</h3>
+        <div id="drafts-list"></div>
+        <div id="no-drafts" style="font-size:12px; color:var(--silver); text-align:center; margin-top:40px; display:none;">No drafts yet.</div>
+    </div>
+
+    <!-- POSTS -->
+    <div id="posts-panel" class="panel">
+        <h3 style="font-size:14px; color:var(--silver); margin-bottom:5px;">DEPLOYED POSTS</h3>
+        <p style="font-size:11px; color:var(--silver); margin-bottom:15px;">From your GitHub repository</p>
+        <button class="tool-btn" style="width:100%; padding:10px; margin-bottom:15px;" onclick="loadPosts()">↻ Fetch Posts</button>
+        <div id="posts-list"></div>
+    </div>
+
+</div>
+
+<!-- MODAL -->
+<div id="modal-overlay">
+    <div id="modal-box">
+        <h4>CONFIRM DEPLOY</h4>
+        <p id="modal-msg"></p>
+        <div class="modal-btns">
+            <button id="modal-cancel" onclick="closeModal()">Cancel</button>
+            <button id="modal-confirm" onclick="deploy()">Deploy</button>
+        </div>
+    </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+</div><!-- end app-wrapper -->
+
+<script>
+    let tags = [];
+
+    /* LOGIN */
+    const _U = 'vaylobatadmin';
+    const _P = 'va#dark555ylo';
+
+    function doLogin() {
+        const u = document.getElementById('login-user').value;
+        const p = document.getElementById('login-pass').value;
+        const errEl = document.getElementById('login-error');
+        if(u === _U && p === _P) {
+            sessionStorage.setItem('vaylo_auth', '1');
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('app-wrapper').style.display = 'flex';
+        } else {
+            errEl.style.display = 'block';
+            document.getElementById('login-pass').value = '';
+            setTimeout(() => errEl.style.display = 'none', 3000);
+        }
+    }
+
+    // Check if already logged in this session
+    if(sessionStorage.getItem('vaylo_auth') === '1') {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('app-wrapper').style.display = 'flex';
+    }
+
+    /* CLOCK */
+    setInterval(() => {
+        document.getElementById('clock').textContent = new Date().toLocaleTimeString('en-US', { hour12: false });
+    }, 1000);
+
+    /* TABS */
+    const PANELS = ['editor-panel','preview-panel','config-panel','drafts-panel','posts-panel'];
+    function showTab(i) {
+        if(window.innerWidth < 1024) {
+            PANELS.forEach((id, idx) => document.getElementById(id).classList.toggle('active', idx === i));
+            document.querySelectorAll('.tab').forEach((t, idx) => t.classList.toggle('active', idx === i));
+        }
+        if(i === 3) renderDrafts();
+    }
+
+    /* TOAST */
+    function toast(msg, type='ok') {
+        const el = document.getElementById('toast');
+        el.textContent = (type === 'ok' ? '✓ ' : '✗ ') + msg;
+        el.className = 'show' + (type === 'err' ? ' err' : '');
+        clearTimeout(el._t);
+        el._t = setTimeout(() => el.className = '', 3000);
+    }
+
+    /* BADGE */
+    function setBadge(state) {
+        const b = document.getElementById('deploy-badge');
+        b.className = state;
+        b.textContent = { idle:'IDLE', loading:'DEPLOYING...', success:'DEPLOYED ✓', error:'FAILED ✗' }[state] || 'IDLE';
+        if(state !== 'idle') setTimeout(() => setBadge('idle'), 5000);
+    }
+
+    /* TAGS */
+    document.getElementById('tag-input').addEventListener('keydown', e => {
+        if(e.key === 'Enter' || e.key === ',') {
+            e.preventDefault();
+            const v = e.target.value.trim().replace(',','');
+            if(v && !tags.includes(v)) { tags.push(v); renderTags(); }
+            e.target.value = '';
+        }
+        if(e.key === 'Backspace' && !e.target.value && tags.length) { tags.pop(); renderTags(); }
+    });
+    function renderTags() {
+        document.querySelectorAll('.tag-chip').forEach(c => c.remove());
+        const w = document.getElementById('tags-wrapper');
+        const inp = document.getElementById('tag-input');
+        tags.forEach((t, i) => {
+            const c = document.createElement('div'); c.className = 'tag-chip';
+            c.innerHTML = `${t}<button onclick="removeTag(${i})">×</button>`;
+            w.insertBefore(c, inp);
+        });
+    }
+    function removeTag(i) { tags.splice(i,1); renderTags(); }
+
+    /* SYNC */
+    function sync() {
+        const content = document.getElementById('main-editor').value;
+        document.getElementById('preview').innerHTML = marked.parse(content);
+        const words = content.trim() ? content.trim().split(/\s+/).length : 0;
+        document.getElementById('word-counter').textContent = `${words} word${words!==1?'s':''} · ${content.length} chars`;
+        localStorage.setItem('v_content', content);
+        localStorage.setItem('v_title', document.getElementById('post-title').value);
+        localStorage.setItem('v_tags', JSON.stringify(tags));
+    }
+
+    /* INSERT */
+    function insert(pre, post="") {
+        const area = document.getElementById('main-editor');
+        const s = area.selectionStart, e = area.selectionEnd;
+        const sel = area.value.substring(s, e);
+        area.value = area.value.substring(0,s) + pre + sel + post + area.value.substring(e);
+        area.selectionStart = area.selectionEnd = s + pre.length + sel.length + post.length;
+        sync(); area.focus();
+    }
+
+    /* LOAD SAVED */
+    window.onload = () => {
+        document.getElementById('main-editor').value = localStorage.getItem('v_content') || "";
+        document.getElementById('post-title').value = localStorage.getItem('v_title') || "";
+        document.getElementById('gh-token').value = localStorage.getItem('v_token') || "";
+        document.getElementById('gh-repo').value = localStorage.getItem('v_repo') || "";
+        try { tags = JSON.parse(localStorage.getItem('v_tags') || '[]'); renderTags(); } catch(e){}
+        sync();
+    }
+
+    /* SAVE CONFIG */
+    function saveConfig() {
+        localStorage.setItem('v_token', document.getElementById('gh-token').value);
+        localStorage.setItem('v_repo', document.getElementById('gh-repo').value);
+        toast('Config saved');
+    }
+
+    /* SAVE DRAFT */
+    function saveDraft() {
+        const title = document.getElementById('post-title').value.trim() || 'Untitled';
+        const content = document.getElementById('main-editor').value;
+        let drafts = JSON.parse(localStorage.getItem('v_drafts') || '[]');
+        const idx = drafts.findIndex(d => d.title === title);
+        const draft = { title, content, tags: [...tags], date: new Date().toLocaleString() };
+        if(idx > -1) drafts[idx] = draft; else drafts.unshift(draft);
+        localStorage.setItem('v_drafts', JSON.stringify(drafts));
+        toast('Draft saved');
+    }
+
+    /* RENDER DRAFTS */
+    function renderDrafts() {
+        const drafts = JSON.parse(localStorage.getItem('v_drafts') || '[]');
+        const list = document.getElementById('drafts-list');
+        const empty = document.getElementById('no-drafts');
+        list.innerHTML = '';
+        empty.style.display = drafts.length ? 'none' : 'block';
+        drafts.forEach((d, i) => {
+            const el = document.createElement('div'); el.className = 'list-item';
+            el.innerHTML = `
+                <div style="flex:1; cursor:pointer;" onclick="loadDraft(${i})">
+                    <div class="item-title">${d.title}</div>
+                    <div class="item-meta">${d.date}${d.tags?.length ? ' · ' + d.tags.join(', ') : ''}</div>
+                </div>
+                <div class="item-actions">
+                    <button class="act-btn" onclick="loadDraft(${i})">Load</button>
+                    <button class="act-btn del" onclick="deleteDraft(event,${i})">Del</button>
+                </div>`;
+            list.appendChild(el);
+        });
+    }
+
+    function loadDraft(i) {
+        const d = JSON.parse(localStorage.getItem('v_drafts') || '[]')[i];
+        document.getElementById('post-title').value = d.title;
+        document.getElementById('main-editor').value = d.content;
+        tags = d.tags || []; renderTags(); sync();
+        showTab(0); toast('Draft loaded');
+    }
+
+    function deleteDraft(e, i) {
+        e.stopPropagation();
+        const drafts = JSON.parse(localStorage.getItem('v_drafts') || '[]');
+        drafts.splice(i, 1);
+        localStorage.setItem('v_drafts', JSON.stringify(drafts));
+        renderDrafts(); toast('Draft deleted');
+    }
+
+    /* UPLOAD FILE */
+    async function uploadFile() {
+        const file = document.getElementById('file-input').files[0];
+        const token = document.getElementById('gh-token').value;
+        const repo = document.getElementById('gh-repo').value;
+        const statusEl = document.getElementById('upload-status');
+        if(!file || !token) { statusEl.textContent = "⚠ Missing file or token!"; return; }
+        statusEl.textContent = "⟳ Uploading..."; statusEl.style.color = '#ffb800';
+        const path = `assets/img/${Date.now()}_${file.name}`;
+        const reader = new FileReader();
+        reader.onload = async () => {
+            try {
+                const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+                    method: 'PUT',
+                    headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: "Upload Media", content: reader.result.split(',')[1] })
+                });
+                if(res.ok) {
+                    const url = `https://raw.githubusercontent.com/${repo}/main/${path}`;
+                    insert(`![img](${url})`);
+                    statusEl.textContent = "✓ Uploaded & link inserted."; statusEl.style.color = 'var(--neon)';
+                    toast('File uploaded');
+                } else { statusEl.textContent = "✗ Upload failed."; statusEl.style.color = '#ff4444'; }
+            } catch(e) { statusEl.textContent = "✗ Network error."; statusEl.style.color = '#ff4444'; }
+        };
+        reader.readAsDataURL(file);
+    }
+
+    /* CONFIRM MODAL */
+    function confirmDeploy() {
+        const title = document.getElementById('post-title').value.trim();
+        const folder = document.getElementById('gh-folder').value;
+        if(!title) { toast('Post title required', 'err'); return; }
+        document.getElementById('modal-msg').textContent = `Push "${title}" to /${folder}/?`;
+        document.getElementById('modal-overlay').classList.add('show');
+    }
+    function closeModal() { document.getElementById('modal-overlay').classList.remove('show'); }
+
+    /* DEPLOY */
+    async function deploy() {
+        closeModal();
+        const token = document.getElementById('gh-token').value;
+        const repo  = document.getElementById('gh-repo').value;
+        const title = document.getElementById('post-title').value.trim();
+        const folder = document.getElementById('gh-folder').value;
+        const content = document.getElementById('main-editor').value;
+        if(!token || !repo || !title) { toast('Fill config & title first', 'err'); return; }
+
+        setBadge('loading');
+        localStorage.setItem('v_token', token);
+        localStorage.setItem('v_repo', repo);
+
+        const date = new Date().toISOString().split('T')[0];
+        const fileName = date + '-' + title.toLowerCase().replace(/[^a-z0-9]+/g,'-') + ".md";
+        const time = new Date().toISOString().replace('T',' ').substring(0,19) + ' +0100';
+        const tagsLine = tags.length ? `tags: [${tags.map(t=>`"${t}"`).join(', ')}]\n` : '';
+        const fm = `---\nlayout: post\ntitle: "${title}"\ndate: ${time}\n${tagsLine}---\n\n`;
+
+        try {
+            let sha;
+            const check = await fetch(`https://api.github.com/repos/${repo}/contents/${folder}/${fileName}`, {
+                headers: { 'Authorization': `token ${token}` }
+            });
+            if(check.ok) { sha = (await check.json()).sha; }
+
+            const body = { message: `${sha?'Update':'Deploy'}: ${title}`, content: btoa(unescape(encodeURIComponent(fm + content))) };
+            if(sha) body.sha = sha;
+
+            const res = await fetch(`https://api.github.com/repos/${repo}/contents/${folder}/${fileName}`, {
+                method: 'PUT',
+                headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            });
+
+            if(res.ok) {
+                setBadge('success');
+                toast(sha ? 'Post updated!' : 'Deployed successfully!');
+                saveDraft();
+            } else {
+                const err = await res.json();
+                setBadge('error');
+                toast('Failed: ' + (err.message || 'Check permissions'), 'err');
+            }
+        } catch(e) { setBadge('error'); toast('Network error', 'err'); }
+    }
+
+    /* LOAD POSTS FROM REPO */
+    async function loadPosts() {
+        const token = document.getElementById('gh-token').value;
+        const repo  = document.getElementById('gh-repo').value;
+        const folder = document.getElementById('gh-folder').value;
+        const listEl = document.getElementById('posts-list');
+        if(!token || !repo) { toast('Configure GitHub first', 'err'); return; }
+        listEl.innerHTML = '<div style="font-size:12px;color:var(--silver)">⟳ Loading...</div>';
+        try {
+            const res = await fetch(`https://api.github.com/repos/${repo}/contents/${folder}`, {
+                headers: { 'Authorization': `token ${token}` }
+            });
+            if(!res.ok) { listEl.innerHTML = '<div style="font-size:12px;color:#ff4444">Failed. Check config.</div>'; return; }
+            const files = (await res.json()).filter(f => f.name.endsWith('.md'));
+            if(!files.length) { listEl.innerHTML = '<div style="font-size:12px;color:var(--silver)">No posts found.</div>'; return; }
+            listEl.innerHTML = '';
+            files.forEach(f => {
+                const el = document.createElement('div'); el.className = 'list-item';
+                el.innerHTML = `
+                    <div style="flex:1;">
+                        <div class="item-title">${f.name}</div>
+                        <div class="item-meta">sha: ${f.sha.slice(0,8)}</div>
+                    </div>
+                    <div class="item-actions">
+                        <button class="act-btn" onclick="loadPostToEditor('${f.download_url}','${f.name}')">Edit</button>
+                        <button class="act-btn del" onclick="deletePost('${f.sha}','${f.path}','${f.name}')">Del</button>
+                    </div>`;
+                listEl.appendChild(el);
+            });
+        } catch(e) { listEl.innerHTML = '<div style="font-size:12px;color:#ff4444">Network error.</div>'; }
+    }
+
+    /* LOAD POST INTO EDITOR */
+    async function loadPostToEditor(url, name) {
+        try {
+            let text = await (await fetch(url)).text();
+            if(text.startsWith('---')) { const end = text.indexOf('---',3); if(end>-1) text = text.substring(end+3).trim(); }
+            document.getElementById('post-title').value = name.replace('.md','').replace(/-/g,' ');
+            document.getElementById('main-editor').value = text;
+            sync(); showTab(0); toast('Post loaded into editor');
+        } catch(e) { toast('Failed to load post', 'err'); }
+    }
+
+    /* DELETE POST */
+    async function deletePost(sha, path, name) {
+        if(!confirm(`Delete "${name}" from repo?`)) return;
+        const token = document.getElementById('gh-token').value;
+        const repo  = document.getElementById('gh-repo').value;
+        try {
+            const res = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+                method: 'DELETE',
+                headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: `Delete: ${name}`, sha })
+            });
+            if(res.ok) { toast('Post deleted'); loadPosts(); }
+            else toast('Delete failed', 'err');
+        } catch(e) { toast('Network error', 'err'); }
+    }
+</script>
+</body>
+</html>
+
