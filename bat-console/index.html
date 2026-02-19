@@ -267,10 +267,12 @@
             <button class="tool-btn" onclick="insert('*','*')">Italic</button>
             <button class="tool-btn" onclick="insert('`','`')">Inline</button>
             <button class="tool-btn" onclick="insert('\n```python\n','\n```')">Code</button>
-            <button class="tool-btn" onclick="insert('![img](',')')">Link Img</button>
+            <button class="tool-btn" onclick="insertImage()">🖼 Image</button>
+            <button class="tool-btn" onclick="insertFile()">📎 File</button>
             <button class="tool-btn" onclick="insert('> ')">Quote</button>
             <button class="tool-btn" onclick="insert('- ')">List</button>
             <button class="tool-btn" onclick="insert('\n---\n')">Divider</button>
+            <button class="tool-btn" onclick="insertGithubCard()" style="color:var(--neon); border-color:#1a3a1a;">GitHub Card</button>
             <button class="tool-btn" onclick="saveDraft()" style="color:var(--neon); border-color:#1a3a1a;">💾 Draft</button>
         </div>
 
@@ -297,7 +299,7 @@
         <button class="tool-btn" style="width:100%; padding:10px; margin-bottom:20px;" onclick="saveConfig()">Save Config</button>
 
         <h3 style="font-size:14px; color:var(--silver); margin-top:10px;">MEDIA UPLOAD</h3>
-        <input type="file" id="file-input" accept="*/*">
+        <input type="file" id="file-input" accept="image/*,video/*,.gif">
         <button class="tool-btn" style="width:100%; padding:10px" onclick="uploadFile()">Upload to Repo</button>
         <div id="upload-status" style="font-size:11px; margin-top:8px; color:var(--neon)"></div>
     </div>
@@ -525,13 +527,50 @@
                 });
                 if(res.ok) {
                     const url = `https://raw.githubusercontent.com/${repo}/main/${path}`;
-                    insert(`![img](${url})`);
-                    statusEl.textContent = "✓ Uploaded & link inserted."; statusEl.style.color = 'var(--neon)';
+                    const isImage = /\.(png|jpg|jpeg|gif|webp|svg)$/i.test(file.name);
+                    if(isImage) {
+                        insert(`\n<div style="text-align:center; margin:20px 0;">\n  <img src="${url}" alt="${file.name}" style="border-radius:8px; border:1px solid #333; width:100%; max-width:700px; box-shadow:0 4px 20px rgba(0,0,0,0.5);">\n</div>\n`);
+                    } else {
+                        insert(`\n<a href="${url}" target="_blank" style="color:#00ff41; font-size:14px; font-family:monospace;">${file.name}</a>\n`);
+                    }
+                    statusEl.textContent = "✓ Uploaded & inserted."; statusEl.style.color = 'var(--neon)';
                     toast('File uploaded');
                 } else { statusEl.textContent = "✗ Upload failed."; statusEl.style.color = '#ff4444'; }
             } catch(e) { statusEl.textContent = "✗ Network error."; statusEl.style.color = '#ff4444'; }
         };
         reader.readAsDataURL(file);
+    }
+
+    /* INSERT IMAGE FROM URL */
+    function insertImage() {
+        const url = prompt('Image URL:');
+        if(!url) return;
+        insert(`\n<div style="text-align:center; margin:20px 0;">\n  <img src="${url}" alt="image" style="border-radius:8px; border:1px solid #333; width:100%; max-width:700px; box-shadow:0 4px 20px rgba(0,0,0,0.5);">\n</div>\n`);
+    }
+
+    /* INSERT FILE LINK FROM URL */
+    function insertFile() {
+        const url = prompt('File URL:');
+        if(!url) return;
+        const name = url.split('/').pop();
+        insert(`\n<a href="${url}" target="_blank" style="color:#00ff41; font-size:14px; font-family:monospace;">${name}</a>\n`);
+    }
+
+    /* INSERT GITHUB CARD */
+    function insertGithubCard() {
+        const url = prompt('GitHub URL:');
+        if(!url) return;
+        insert(`\n<div style="margin-top:50px; padding:20px; border:1px solid #1a1a1a; border-radius:10px; background:#0a0a0a; display:flex; align-items:center; justify-content:space-between;">
+  <div>
+    <h4 style="margin:0; color:#ffffff; font-size:1.1em;">Full Writeup & Files</h4>
+    <p style="margin:5px 0 0 0; color:#666; font-size:0.9em;">View the exploit code and notes on GitHub.</p>
+  </div>
+  <a href="${url}" target="_blank" style="text-decoration:none !important;">
+    <div style="display:flex; align-items:center; gap:10px; background:#ffffff; color:#000000; padding:10px 20px; border-radius:6px; font-weight:600; font-size:0.9em;" onmouseover="this.style.background='#00FF00'" onmouseout="this.style.background='#ffffff'">
+      View on GitHub
+    </div>
+  </a>
+</div>\n`);
     }
 
     /* CONFIRM MODAL */
