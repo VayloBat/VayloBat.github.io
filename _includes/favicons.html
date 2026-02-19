@@ -7,25 +7,30 @@
 <meta name="msapplication-TileColor" content="#000000">
 <meta name="msapplication-config" content="/browserconfig.xml">
 <meta name="theme-color" content="#00ff00">
+
 <style>
   #lock-btn {
-    position: fixed;
-    top: 20px;
-    left: 220px;
-    z-index: 9999;
-    background: none;
-    border: none;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 11px;
+    font-size: 10px;
     text-decoration: none;
     color: #666;
     letter-spacing: 2px;
     font-family: system-ui;
+    transition: color 0.3s;
   }
   #lock-btn:hover { color: #00ff41; }
-  #sidebar.sidebar-expand #lock-btn,
-  .sidebar-expand #lock-btn { opacity: 1; }
 </style>
-<a id="lock-btn" href="/bat-console/" title="">ADMIN</a>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const footer = document.querySelector('.sidebar-bottom');
+    if(footer) {
+      const a = document.createElement('a');
+      a.id = 'lock-btn';
+      a.href = '/bat-console/';
+      a.textContent = 'ADMIN';
+      a.style = 'font-size:10px; text-decoration:none; color:#555; letter-spacing:2px; font-family:system-ui; transition:color 0.3s;';
+      a.onmouseover = () => a.style.color = '#00ff41';
+      a.onmouseout = () => a.style.color = '#555';
+      footer.appendChild(a);
+    }
+  });
+</script>
