@@ -10,17 +10,22 @@
 <style>
   #lock-btn {
     position: fixed;
-    top: 16px;
-    left: 16px;
+    top: 20px;
+    left: 220px;
     z-index: 9999;
     background: none;
     border: none;
     cursor: pointer;
-    opacity: 0.15;
+    opacity: 0;
     transition: opacity 0.3s;
-    font-size: 20px;
+    font-size: 11px;
     text-decoration: none;
+    color: #666;
+    letter-spacing: 2px;
+    font-family: system-ui;
   }
-  #lock-btn:hover { opacity: 1; }
+  #lock-btn:hover { color: #00ff41; }
+  #sidebar.sidebar-expand #lock-btn,
+  .sidebar-expand #lock-btn { opacity: 1; }
 </style>
-<a id="lock-btn" href="/bat-console/" title="">🔒</a>
+<a id="lock-btn" href="/bat-console/" title="">ADMIN</a>
