@@ -3,7 +3,7 @@ title: "Security Research: Deep Dive into HiTV Modded APK Architecture"
 layout: post
 date: 2026-03-17 20:00:00 +0100
 categories: [Research, Malware-Analysis]
-tags: [Android, ReverseEngineering, Security, Pwn, ArchLinux]
+tags: [Android, ReverseEngineering, Security, resercher, apk]
 ---
 
 ## ⚖️ Disclaimer
@@ -21,16 +21,33 @@ The first step in my investigation was extracting the digital signatures (Hashes
 
 Following this, I utilized the `strings` tool for initial text segment scanning. The first red flags emerged immediately; I detected calls to libraries unrelated to media streaming, such as `org.lsposed.lspd` and `canyie.pine`.
 
+<div align="center">
+  <img src="/assets/img/hitv/hitv4.png" width="95%" style="border: 2px solid #00d9ff; border-radius: 10px;">
+  <p><i>Figure 1: Initial search reveals VMRuntime capabilities (hitv4.png).</i></p>
+</div>
+
 ## 3. Structural Deconstruction & "Injection Engine" Discovery
 Using `Apktool` and `JADX-GUI`, I decompiled the APK. What I found was a deliberate "orthogonal planting" of malicious code within the original application:
 ### A. Manifest Exploitation (Permission Profiling)
 I found that the entity responsible for the mod added "aggressive" permissions granting the app total device control:
+
+<div align="center">
+  <img src="/assets/img/hitv/hitv1.png" width="95%" style="border: 2px solid #ff4444; border-radius: 10px;">
+  <p><i>Figure 2: Manifest audit exposing the dangerous permissions and Gremory provider (hitv1.png).</i></p>
+</div>
+
 * **Direct Surveillance:** Access requests for the Camera (`CAMERA`) and Microphone (`RECORD_AUDIO`).
 * **Data Harvesting:** The `QUERY_ALL_PACKAGES` permission allows the app to inventory every banking and wallet app on your phone.
 * **Persistence:** The `BOOT_COMPLETED` permission ensures the spyware tools launch automatically upon device reboot.
 
 ### B. Advanced Injection Engine (LSPatch & Gremory Hook)
 The most shocking discovery was the presence of **LSPatch** injected directly into the app. The "developer" planted a class named `com.gremory.hook` acting as a `ContentProvider`.
+
+<div align="center">
+  <img src="/assets/img/hitv/hitv2.png" width="95%" style="border: 2px solid #ff4444; border-radius: 10px;">
+  <p><i>Figure 3: Technical evidence of the injected com.gremory.hook class (hitv2.png).</i></p>
+</div>
+
 > **Technical Verdict:** Utilizing a `ContentProvider` here is a professional tactic to ensure the injection code executes in the device's memory **before** any other component, allowing it to intercept (Hook) system functions and exfiltrate data in total silence.
 ## 4. Obfuscation Analysis (Dynamic Payload Decryption)
 During my deep dive into the source code, I encountered obfuscated functions. I discovered mysterious numerical arrays (e.g., `f0short`) processed via a dynamic decryption function `m6()`.
@@ -38,8 +55,15 @@ During my deep dive into the source code, I encountered obfuscated functions. I 
 
 ## 5. Indicator of Compromise (IOC) Extraction
 I filtered the embedded links in the code using advanced `grep` commands:
+
+<div align="center">
+  <img src="/assets/img/hitv/hitv3.png" width="95%" style="border: 2px solid #ffcc00; border-radius: 10px;">
+  <p><i>Figure 4: Identification of hardcoded tracking domains (hitv3.png).</i></p>
+</div>
+
 ```bash
 grep -Er "http" . | grep -v "google" | sort -u
+
 ```
 The results revealed covert communication with Chinese domains and servers belonging to **mob.com** and **sharesdk**—tools typically used for harvesting user data for sale or targeted advertising.
 
