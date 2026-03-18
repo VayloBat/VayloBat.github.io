@@ -57,3 +57,17 @@ order: 1
   </a>
 
 </div>
+<div class="research-container">
+  
+  <a href="{{ '/posts/hitv-mod-analysis-part1/' | relative_url }}" class="res-card">
+    <h3 class="res-title">📱 HiTV Modded APK Architecture Research</h3>
+    <p class="res-desc">
+      Security Research: Deep Dive into HiTV Modded APK Architecture (Part1).
+    </p>
+    <div style="margin-top: auto; padding-top: 15px;">
+      <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#Hardware</span>
+      <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#ReverseEngineering</span>
+    </div>
+  </a>
+
+</div>
