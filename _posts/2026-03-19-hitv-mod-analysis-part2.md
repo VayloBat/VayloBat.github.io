@@ -64,7 +64,7 @@ The analysis confirmed a "suspicious call-list" the application attempts to cont
 A critical configuration file named `ShareSDK.xml` was discovered. It revealed the unauthorized integration of the **MobTech** platform.
 
 <div align="center">
-  <img src="sharesdk_evidence.png" alt="ShareSDK Configuration Data" width="85%">
+  <img src="/assets/img/hitv/sharesdk_xml_evidence.png" alt="ShareSDK Configuration Data" width="85%">
   <p><i>Figure 4: Exposed MobTech AppKey and AppSecret within the Assets folder.</i></p>
 </div>
 
