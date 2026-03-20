@@ -217,12 +217,9 @@ Stay tuned for Part III where we'll execute these dynamic analysis techniques in
 
 ---
 
-**Enjoyed this deep dive into malware infrastructure? Follow me on GitHub to catch Part III as soon as it drops. For questions or collaboration on security research, feel free to reach out.**
+**Enjoyed this deep dive into malware infrastructure? Follow me on GitHub to catch Part 3 as soon as it drops. For questions or collaboration on security research, feel free to reach out.**
 
-**Related Articles:**
-- [Part 1: Deep Dive into HiTV Modded APK Architecture](./hitv-mod-analysis-part1.md)
-- [Malware Analysis Methodology Guide](./malware-analysis-guide.md)
 
 ---
 
-*Last Updated: March 20, 2026*
+
