@@ -19,7 +19,7 @@ In Part I, the investigation established that the modded HiTV APK communicates w
 However, during the deep **Static Analysis** phase within the **REMnux** environment, multiple critical technical artifacts (IoCs) were uncovered within both the **Assets** and **Native Libraries**, requiring an immediate shift in methodology and deeper inspection before execution.
 
 <div align="center">
-  <img src="/assets/img/hitv/remnux_setup.png" alt="REMnux Environment Analysis" width="85%">
+  <img src="/assets/img/hitv/1.png" alt="REMnux Environment Analysis" width="85%">
   <p><i><strong>Figure 1:</strong> Forensic analysis environment using REMnux toolkit.</i></p>
 </div>
 
@@ -76,7 +76,7 @@ Building on Part I observations, the extracted artifacts confirm the existence o
 | `http://192.168.1.75:3000`  | Local Testing / Dev Infrastructure | Found in Source                |
 
 <div align="center">
-  <img src="/assets/img/hitv/grep_infrastructure.png" alt="Infrastructure Grep Analysis" width="85%">
+  <img src="/assets/img/hitv/4.png" alt="Infrastructure Grep Analysis" width="85%">
   <p><i><strong>Figure 4:</strong> Identified C2 infrastructure and network endpoints extracted from binary analysis.</i></p>
 </div>
 
