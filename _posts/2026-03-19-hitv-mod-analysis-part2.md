@@ -123,10 +123,6 @@ This behavior is consistent with **abuse of legitimate services for covert data 
 
 The Assets folder contains obfuscated JavaScript files designed to hinder analysis.
 
-<div align="center">
-  <img src="/assets/img/hitv/js_obfuscation_code.png" alt="JavaScript Obfuscation Analysis" width="85%">
-  <p><i><strong>Figure 6:</strong> ASCII-based obfuscation hiding URLs and endpoints.</i></p>
-</div>
 
 **Observed Techniques:**
 
@@ -144,7 +140,7 @@ These techniques are specifically designed to **delay or prevent detection**, an
 ### Persistence Mechanisms
 
 <div align="center">
-  <img src="/assets/img/hitv/manifest_persistence_checks.png" alt="Android Manifest Persistence Analysis" width="85%">
+  <img src="/assets/img/hitv/7.png" alt="Android Manifest Persistence Analysis" width="85%">
   <p><i><strong>Figure 7:</strong> Boot persistence via Android Manifest.</i></p>
 </div>
 
@@ -165,7 +161,7 @@ For a streaming application, these permissions are not functionally justified an
 ### Lateral Movement Indicators
 
 <div align="center">
-  <img src="/assets/img/hitv/local_ip_leak.png" alt="Local Network Reconnaissance Evidence" width="85%">
+  <img src="/assets/img/hitv/8.png" alt="Local Network Reconnaissance Evidence" width="85%">
   <p><i><strong>Figure 8:</strong> Evidence of local network targeting via hardcoded IP.</i></p>
 </div>
 
