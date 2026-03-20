@@ -65,7 +65,7 @@ order: 1
       Security Research: Deep Dive into HiTV Modded APK Architecture (Part1).
     </p>
     <div style="margin-top: auto; padding-top: 15px;">
-      <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#Hardware</span>
+      <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#App</span>
       <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#ReverseEngineering</span>
     </div>
   </a>
@@ -79,7 +79,7 @@ order: 1
       Security Research: Deep Dive into HiTV Modded APK Architecture (Part2).
     </p>
     <div style="margin-top: auto; padding-top: 15px;">
-      <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#Hardware</span>
+      <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#App</span>
       <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#ReverseEngineering</span>
     </div>
   </a>
