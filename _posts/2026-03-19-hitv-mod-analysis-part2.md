@@ -34,6 +34,10 @@ While the original application is built on the **Flutter** framework, the "Modde
   <img src="/assets/img/hitv/native_binary_strings.png" alt="Binary Strings Extraction" width="85%">
   <p><i>Figure 2: Extracting hardcoded artifacts from the Native Binary Layer.</i></p>
 </div>
+<div align="center">
+  <img src="/assets/img/hitv/ful.png" alt="Binary Strings Extraction" width="85%">
+  <p><i>Figure 2: Native-level string analysis revealing hidden Command & Control (C2) endpoints within the arm64-v8a architecture.</i></p>
+</div>
 
 * **Findings:** Utilizing advanced `strings` and `grep` utilities in REMnux, I extracted hardcoded API keys and hidden URLs that are completely absent from the standard Java/Dalvik layer.
 
@@ -67,6 +71,7 @@ A critical configuration file named `ShareSDK.xml` was discovered. It revealed t
   <img src="/assets/img/hitv/sharesdk_xml_evidence.png" alt="ShareSDK Configuration Data" width="85%">
   <p><i>Figure 4: Exposed MobTech AppKey and AppSecret within the Assets folder.</i></p>
 </div>
+
 <div align="center">
   <img src="/assets/img/hitv/remnux_grep_appkey.png" alt="ShareSDK Configuration Data" width="85%">
   <p><i> Figure 4b: Deep Tracing: The AppKey (558980885691176) embedded across Assets, XML resources, and Native Binaries. </i></p>
@@ -117,7 +122,7 @@ Based on this forensic evidence, users should be aware:
 1. **LSPatch/Xposed Artifacts:** If you decompile an APK and find folders named `lspatch`, it is a definitive sign of code injection.
 
 <div align="center">
-  <img src="lspatch_artifacts.png" alt="LSPatch Evidence" width="85%">
+  <img src="vv" alt="LSPatch Evidence" width="85%">
   <p><i>Figure 8: Injected LSPatch artifacts found within the application resources.</i></p>
 </div>
 
