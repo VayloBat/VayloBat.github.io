@@ -64,18 +64,12 @@ The analysis confirmed a "suspicious call-list" the application attempts to cont
 A critical configuration file named `ShareSDK.xml` was discovered. It revealed the unauthorized integration of the **MobTech** platform.
 
 ​<div align="center">
-<table width="100%">
-<tr>
-<td width="50%" align="center">
-<img src="/assets/img/hitv/sharesdk_xml_evidence.png" alt="ShareSDK Key GUI" width="100%">
-<p><i>Figure 4a: Exposed MobTech AppKey and AppSecret in the JADX-GUI.</i></p>
-</td>
-<td width="50%" align="center">
-<img src="/assets/img/hitv/remnux_grep_appkey.png" alt="Grep Results for AppKey" width="100%">
-<p><i>Figure 4b: Deep Tracing: The AppKey (558980885691176) embedded across Assets, XML resources, and Native Binaries.</i></p>
-</td>
-</tr>
-</table>
+  <img src="/assets/img/hitv/sharesdk_xml_evidence.png" alt="ShareSDK Configuration Data" width="85%">
+  <p><i>Figure 4: Exposed MobTech AppKey and AppSecret within the Assets folder.</i></p>
+</div>
+<div align="center">
+  <img src="/assets/img/hitv/remnux_grep_appkey.png" alt="ShareSDK Configuration Data" width="85%">
+  <p><i> Figure 4b: Deep Tracing: The AppKey (558980885691176) embedded across Assets, XML resources, and Native Binaries. </i></p>
 </div>
 * **Extracted Evidence:**
     * `AppKey`: `558980885691176`
