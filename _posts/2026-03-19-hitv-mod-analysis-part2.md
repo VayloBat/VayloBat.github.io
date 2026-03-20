@@ -31,7 +31,7 @@ While the original application is built on the **Flutter** framework, the "Modde
 * **Technique:** **Code Injection** within C++ compiled libraries.
 
 <div align="center">
-  <img src="native_strings.png" alt="Binary Strings Extraction" width="85%">
+  <img src="/assets/img/hitv/native_binary_strings.png" alt="Binary Strings Extraction" width="85%">
   <p><i>Figure 2: Extracting hardcoded artifacts from the Native Binary Layer.</i></p>
 </div>
 
