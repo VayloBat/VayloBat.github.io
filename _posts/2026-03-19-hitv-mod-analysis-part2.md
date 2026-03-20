@@ -1,5 +1,5 @@
 ---
-title: "Security Research: Infrastructure Analysis of HiTV Modded APK (Part II)"
+title: "Security Research: Infrastructure Analysis of HiTV Modded APK (Part 2)"
 layout: post
 date: 2026-03-19 10:00:00 +0100
 categories: [Research, Malware-Analysis]
@@ -24,7 +24,7 @@ I discovered that the attacker did not settle for surface-level modifications; i
 
 ---
 
-## 1️⃣ Low-Level Anatomy: The Native Binary Layer
+## 0x1 Low-Level Anatomy: The Native Binary Layer:
 While the original application is built on the **Flutter** framework, the "Modded" version contains manipulated Native Library files (**Shared Objects - .so**).
 
 * **Target Files:** `lib/arm64-v8a/libapp.so` & `lib/armeabi-v7a/libapp.so`.
@@ -41,7 +41,7 @@ While the original application is built on the **Flutter** framework, the "Modde
 
 ---
 
-## 2️⃣ Unmasking the Command & Control (C2) Network
+## 0x2 Unmasking the Command & Control (C2) Network:
 The analysis confirmed a "suspicious call-list" the application attempts to contact for data exfiltration. Here is the breakdown of the intercepted endpoints:
 
 ### 🌐 Hidden DNS Records & Endpoints
@@ -60,7 +60,7 @@ The analysis confirmed a "suspicious call-list" the application attempts to cont
 
 ---
 
-## 3️⃣ Third-Party SDK Exploitation (The "ShareSDK" Cover)
+## 0x3 Third-Party SDK Exploitation (The "ShareSDK" Cover):
 A critical configuration file named `ShareSDK.xml` was discovered. It revealed the unauthorized integration of the **MobTech** platform.
 
 <div align="center">
@@ -76,7 +76,7 @@ A critical configuration file named `ShareSDK.xml` was discovered. It revealed t
 
 ---
 
-## 4️⃣ Advanced Obfuscation Techniques
+## 0x4 Advanced Obfuscation Techniques:
 Within the Assets folder, specifically JavaScript scripts like `omsdk-v1.js` and `omid_validation_verification_script_v1.js`, I found sophisticated code manipulation:
 
 <div align="center">
@@ -89,7 +89,7 @@ Within the Assets folder, specifically JavaScript scripts like `omsdk-v1.js` and
 
 ---
 
-## 5️⃣ The "Smoking Gun": Deep Persistence & Lateral Movement
+## 0x5 The "Smoking Gun": Deep Persistence & Lateral Movement:
 Beyond the C2 endpoints, the following hidden mechanisms were identified in the `AndroidManifest.xml` and bytecode:
 
 <div align="center">
@@ -132,7 +132,7 @@ For researchers wishing to replicate this analysis, here are the digital fingerp
 
 ---
 
-## ⏭️ What’s Next in Part III?
+## ⏭️ What’s Next in Part3 ?
 Now that we have mapped the targets and extracted the encrypted addresses, we are ready for the most dangerous phase: **Dynamic Analysis**.
 1. Breaking **SSL Pinning** protection using **Frida**.
 2. Running the app in a strictly isolated environment and intercepting **HTTP Traffic** via **Burp Suite**.
