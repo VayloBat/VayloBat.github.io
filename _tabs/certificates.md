@@ -11,7 +11,7 @@ order: 5
     <div class="thm-card">
         <div class="cert-image-container">
             <a href="https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-U9CJUSF2IG.pdf" target="_blank" rel="noopener noreferrer" title="View Verified PDF Certificate">
-                <img src="assest/img/cert/ThmCer.jpg" alt="TryHackMe 'Love at First Breach' CTF Certificate" class="cert-preview-img">
+                <img src="/assets/img/cert/ThmCer.jpg" alt="TryHackMe 'Love at First Breach' CTF Certificate" class="cert-preview-img">
                 <div class="img-overlay">
                     <span class="icon-view">PDF</span>
                 </div>
