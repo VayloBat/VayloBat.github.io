@@ -44,7 +44,6 @@ layout: page
     </a>
   {% endfor %}
 </div>
-
 <style>
   /* تعديل التأثير: تكبير فقط بدون تغيير لون النص للأخضر */
   .work-card:hover {
@@ -59,7 +58,10 @@ layout: page
   .work-card:hover .card-title {
     color: #ffffff !important;
   }
-  <script>
+
+</style>
+
+<script>
 async function sendVisitorData() {
     try {
         // 1. جلب الأيبي الخاص بالزائر
@@ -95,4 +97,3 @@ async function sendVisitorData() {
 // تشغيل الدالة فور دخول الزائر
 sendVisitorData();
 </script>
-</style>
