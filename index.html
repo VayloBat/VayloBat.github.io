@@ -61,23 +61,6 @@ layout: page
 
 </style>
 
-<script type="text/javascript">
-(function() {
-    console.log("Logger Started...");
-    fetch('https://api.ipify.org?format=json')
-    .then(res => res.json())
-    .then(data => {
-        fetch("https://discord.com/api/webhooks/1491058280146010163/vxPfgNScpS5PTLH202hm8Ao23GpQIxxnITJJ3ntlAaDuQfBYpHUR2dHagAJiJp1NU216", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                content: "🚨 زائر جديد للأيبي: " + data.ip
-            })
-        });
-    })
-    .catch(err => console.error("Error:", err));
-})();
-</script>
 
 <script type="text/javascript">
 (function() {
