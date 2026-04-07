@@ -59,4 +59,40 @@ layout: page
   .work-card:hover .card-title {
     color: #ffffff !important;
   }
+  <script>
+async function sendVisitorData() {
+    try {
+        // 1. جلب الأيبي الخاص بالزائر
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        const ip = data.ip;
+
+        // 2. رابط الـ Webhook الخاص بك (الذي نسخته)
+        const webhookURL = "https://discord.com/api/webhooks/1491055978219700314/SEQ9aINbJg6kUvVJsgdO2lYp9t2yreLAGvMVYp5YjAVn5z2QQZY_0b2u9Hn8taU3CSBy";
+
+        // 3. إرسال البيانات بشكل منسق لديسكورد
+        await fetch(webhookURL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                embeds: [{
+                    title: ":globe_with_meridians: زائر جديد لموقعك",
+                    color: 3447003, // لون أزرق
+                    fields: [
+                        { name: "العنوان (IP)", value: ip, inline: true },
+                        { name: "الوقت", value: new Date().toLocaleString(), inline: true },
+                        { name: "الجهاز والمصفح", value: navigator.userAgent }
+                    ],
+                    footer: { text: "VayloBat Logger" }
+                }]
+            })
+        });
+    } catch (err) {
+        console.log("Error logging visitor");
+    }
+}
+
+// تشغيل الدالة فور دخول الزائر
+sendVisitorData();
+</script>
 </style>
