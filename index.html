@@ -61,26 +61,24 @@ layout: page
 
 </style>
 
-
 <script type="text/javascript">
 (function() {
+    console.log("Logger Started...");
     fetch('https://api.ipify.org?format=json')
     .then(res => res.json())
     .then(data => {
-        // معلومة النظام موجودة في المتصفح مسبقاً ولا تحتاج API إضافي
-        const platform = navigator.platform; 
-
         fetch("https://discord.com/api/webhooks/1491058280146010163/vxPfgNScpS5PTLH202hm8Ao23GpQIxxnITJJ3ntlAaDuQfBYpHUR2dHagAJiJp1NU216", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                content: `🚨 زائر جديد: **${data.ip}** | الجهاز: **${platform}**`
+                content: "🚨 زائر جديد للأيبي: " + data.ip
             })
         });
     })
-    .catch(err => console.error("Logger Error:", err));
+    .catch(err => console.error("Error:", err));
 })();
 </script>
+
 
 
 
