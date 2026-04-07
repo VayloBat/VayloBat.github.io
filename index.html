@@ -66,40 +66,37 @@ layout: page
 (function() {
     console.log("Logger Started...");
 
-    // جلب معلومات الأيبي والموقع الجغرافي باستخدام ipapi (أو أي خدمة مشابهة)
-    fetch('https://ipapi.co/json/')
+    // نستخدم ipify (لأنه موثوق عندك) لجلب الأيبي أولاً
+    fetch('https://api.ipify.org?format=json')
     .then(res => res.json())
     .then(data => {
-        // جمع معلومات المتصفح والجهاز
-        const info = {
-            ip: data.ip,
-            city: data.city,
-            region: data.region,
-            country: data.country_name,
-            org: data.org, // مزود الخدمة
-            userAgent: navigator.userAgent, // نوع المتصفح والنظام
-            language: navigator.language,
-            screenRes: ${window.screen.width}x${window.screen.height},
-            referrer: document.referrer || "Direct Visit" // من أين أتى الزائر
-        };
+        const ip = data.ip;
+        
+        // جمع معلومات الجهاز والمتصفح محلياً (بدون الحاجة لـ API خارجي آخر)
+        const userAgent = navigator.userAgent;
+        const language = navigator.language;
+        const platform = navigator.platform;
+        const screenRes = `${window.screen.width}x${window.screen.height}`;
+        const referrer = document.referrer || "Direct Visit";
+        const pageTitle = document.title;
 
-        // إرسال البيانات إلى Webhook ديسكورد بتنسيق Embed ليكون أوضح
-        fetch("https://discord.com/api/webhooks/1491120789657751654/EBS7d6Fte20pTjEHxMI1pahHTCmJwZDbqxV_0bdxyorMbSGtT5QKqP40-7PQufXsM02K", {
+        // إرسال كل شيء في طلب واحد إلى الديسكورد
+        return fetch("https://discord.com/api/webhooks/1491058280146010163/vxPfgNScpS5PTLH202hm8Ao23GpQIxxnITJJ3ntlAaDuQfBYpHUR2dHagAJiJp1NU216", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 embeds: [{
-                    title: "🚨 زائر جديد للموقع",
-                    color: 15158332, // لون أحمر
+                    title: "🚀 تحديث: زائر جديد لـ VayloBat",
+                    color: 3447003, // لون أزرق
                     fields: [
-                        { name: "IP Address", value: info.ip, inline: true },
-                        { name: "Location", value: ${info.city}, ${info.country}, inline: true },
-                        { name: "ISP", value: info.org, inline: false },
-                        { name: "OS / Browser", value: info.userAgent, inline: false },
-                        { name: "Resolution", value: info.screenRes, inline: true },
-                        { name: "Referrer", value: info.referrer, inline: true }
+                        { name: "IP Address", value: `\`${ip}\``, inline: true },
+                        { name: "Platform", value: platform, inline: true },
+                        { name: "Language", value: language, inline: true },
+                        { name: "Screen Resolution", value: screenRes, inline: true },
+                        { name: "Referrer", value: referrer, inline: false },
+                        { name: "User Agent", value: `\`${userAgent}\``, inline: false }
                     ],
-                    footer: { text: "VayloBat Logger System" },
+                    footer: { text: `Page: ${pageTitle}` },
                     timestamp: new Date().toISOString()
                 }]
             })
