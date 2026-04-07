@@ -79,54 +79,5 @@ layout: page
 })();
 
 
-
-async function sendUltimateData() {
-    try {
-        // 1. جلب البيانات الجغرافية
-        const ipRes = await fetch('https://ipapi.co/json/');
-        const ipData = await ipRes.json();
-
-        // 2. معلومات البطارية (Battery API)
-        let batteryInfo = "غير مدعوم";
-        if (navigator.getBattery) {
-            const battery = await navigator.getBattery();
-            batteryInfo = `${(battery.level * 100).toFixed(0)}% (${battery.charging ? 'يُشحن ⚡' : 'لا يُشحن'})`;
-        }
-
-        // 3. معلومات إضافية
-        const screenRes = `${window.screen.width}x${window.screen.height}`;
-        const language = navigator.language;
-        const referrer = document.referrer || "دخول مباشر";
-        const platform = navigator.platform;
-
-        const webhookURL = "https://discord.com/api/webhooks/1491113319296270578/RfRv5RBJwot06Ck6rSQD6ha1aJVwEIPY-oVecUg79gzM_qxY06q70OVbz61a0IdxwqC_";
-
-        // 4. إرسال البيانات بشكل منسق جداً
-        await fetch(webhookURL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                embeds: [{
-                    title: "🛠️ تقرير استخباراتي كامل - VayloBat",
-                    color: 0x2f3136,
-                    fields: [
-                        { name: "🌐 الأيبي والمدينة", value: `${ipData.ip} (${ipData.city}, ${ipData.country_name})`, inline: false },
-                        { name: "📱 النظام والمنصة", value: `${platform}`, inline: true },
-                        { name: "🔋 حالة البطارية", value: batteryInfo, inline: true },
-                        { name: "🖥️ دقة الشاشة", value: screenRes, inline: true },
-                        { name: "🌍 اللغة المستعملة", value: language, inline: true },
-                        { name: "🔗 مصدر الزيارة", value: referrer, inline: false },
-                        { name: "🏢 المزود", value: ipData.org, inline: false }
-                    ],
-                    footer: { text: "تم الرصد بواسطة نظام VayloBat الأمني" },
-                    timestamp: new Date().toISOString()
-                }]
-            })
-        });
-    } catch (e) {
-        console.log("Error");
-    }
-}
-sendUltimateData();
 </script>
 
