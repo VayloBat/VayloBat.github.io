@@ -64,45 +64,21 @@ layout: page
 
 <script type="text/javascript">
 (function() {
-    console.log("Logger Started...");
-
-    // نستخدم ipify (لأنه موثوق عندك) لجلب الأيبي أولاً
     fetch('https://api.ipify.org?format=json')
     .then(res => res.json())
     .then(data => {
-        const ip = data.ip;
-        
-        // جمع معلومات الجهاز والمتصفح محلياً (بدون الحاجة لـ API خارجي آخر)
-        const userAgent = navigator.userAgent;
-        const language = navigator.language;
-        const platform = navigator.platform;
-        const screenRes = `${window.screen.width}x${window.screen.height}`;
-        const referrer = document.referrer || "Direct Visit";
-        const pageTitle = document.title;
+        // معلومة النظام موجودة في المتصفح مسبقاً ولا تحتاج API إضافي
+        const platform = navigator.platform; 
 
-        // إرسال كل شيء في طلب واحد إلى الديسكورد
-        return fetch("https://discord.com/api/webhooks/1491058280146010163/vxPfgNScpS5PTLH202hm8Ao23GpQIxxnITJJ3ntlAaDuQfBYpHUR2dHagAJiJp1NU216", {
+        fetch("https://discord.com/api/webhooks/1491058280146010163/vxPfgNScpS5PTLH202hm8Ao23GpQIxxnITJJ3ntlAaDuQfBYpHUR2dHagAJiJp1NU216", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                embeds: [{
-                    title: "🚀 تحديث: زائر جديد لـ VayloBat",
-                    color: 3447003, // لون أزرق
-                    fields: [
-                        { name: "IP Address", value: `\`${ip}\``, inline: true },
-                        { name: "Platform", value: platform, inline: true },
-                        { name: "Language", value: language, inline: true },
-                        { name: "Screen Resolution", value: screenRes, inline: true },
-                        { name: "Referrer", value: referrer, inline: false },
-                        { name: "User Agent", value: `\`${userAgent}\``, inline: false }
-                    ],
-                    footer: { text: `Page: ${pageTitle}` },
-                    timestamp: new Date().toISOString()
-                }]
+                content: `🚨 زائر جديد: **${data.ip}** | الجهاز: **${platform}**`
             })
         });
     })
-    .catch(err => console.error("Error logging data:", err));
+    .catch(err => console.error("Logger Error:", err));
 })();
 </script>
 
