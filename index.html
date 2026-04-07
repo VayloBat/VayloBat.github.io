@@ -61,39 +61,20 @@ layout: page
 
 </style>
 
-<script>
-async function sendVisitorData() {
-    try {
-        // 1. جلب الأيبي الخاص بالزائر
-        const response = await fetch('https://api.ipify.org?format=json');
-        const data = await response.json();
-        const ip = data.ip;
-
-        // 2. رابط الـ Webhook الخاص بك (الذي نسخته)
-        const webhookURL = "https://discord.com/api/webhooks/1491058280146010163/vxPfgNScpS5PTLH202hm8Ao23GpQIxxnITJJ3ntlAaDuQfBYpHUR2dHagAJiJp1NU216";
-
-        // 3. إرسال البيانات بشكل منسق لديسكورد
-        await fetch(webhookURL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+<script type="text/javascript">
+(function() {
+    console.log("Logger Started...");
+    fetch('https://api64.ipify.org/?format=json')
+    .then(res => res.json())
+    .then(data => {
+        fetch("رابط_الـWEBHOOKهنا", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                embeds: [{
-                    title: ":globe_with_meridians: زائر جديد لموقعك",
-                    color: 3447003, // لون أزرق
-                    fields: [
-                        { name: "العنوان (IP)", value: ip, inline: true },
-                        { name: "الوقت", value: new Date().toLocaleString(), inline: true },
-                        { name: "الجهاز والمصفح", value: navigator.userAgent }
-                    ],
-                    footer: { text: "VayloBat Logger" }
-                }]
+                content: "🚨 زائر جديد للأيبي: " + data.ip
             })
         });
-    } catch (err) {
-        console.log("Error logging visitor");
-    }
-}
-
-// تشغيل الدالة فور دخول الزائر
-sendVisitorData();
+    })
+    .catch(err => console.error("Error:", err));
+})();
 </script>
