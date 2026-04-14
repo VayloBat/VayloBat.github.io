@@ -6,14 +6,15 @@ order: 2
 ---
 
 <div style="margin-top: 20px; font-family: sans-serif;">
-    <p style="color: #888; line-height: 1.6;">
-        If you have professional inquiries regarding binary exploitation, malware analysis, or reverse engineering, please use the portal below. Direct transmissions are routed to my secure endpoint.
-    </p>
 
-    <div style="margin-top: 40px; border: 1px solid #333; padding: 25px; border-radius: 8px; background: rgba(255,255,255,0.02);">
+    <div style="margin-top: 10px; border: 1px solid #333; padding: 25px; border-radius: 8px; background: rgba(255,255,255,0.02);">
         <h4 style="margin-top: 0; color: #fff; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; border-bottom: 1px solid #333; padding-bottom: 15px;">
             [ Transmission Portal ]
         </h4>
+        
+        <p style="color: #888; font-size: 0.85rem; line-height: 1.5; margin-bottom: 25px;">
+            If you have a message or something important to share, you can write it here. It will be transmitted directly to my secure endpoint.
+        </p>
         
         <div style="margin-top: 20px;">
             <label style="color: #c0c0c0; display: block; font-size: 0.75rem; margin-bottom: 8px; font-weight: bold; letter-spacing: 1px;">SENDER_ID</label>
@@ -35,7 +36,7 @@ order: 2
         <p id="status-msg" style="margin-top: 15px; font-size: 0.85rem; display: none; padding: 10px; border-radius: 4px; text-align: center;"></p>
     </div>
 
-    <div style="margin-top: 50px; text-align: center;">
+    <div style="margin-top: 60px; text-align: center;">
         <p style="color: #555; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 25px;">Verified Communication Endpoints</p>
         
         <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
