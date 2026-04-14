@@ -50,10 +50,13 @@ order: 2
 <script>
 function sendToDiscord() {
     const webhookURL = "https://discord.com/api/webhooks/1491120789657751654/EBS7d6Fte20pTjEHxMI1pahHTCmJwZDbqxV_0bdxyorMbSGtT5QKqP40-7PQufXsM02K";
-    const name = document.getElementById('discord-name').value || "Anonymous_Origin";
-    const message = document.getElementById('discord-msg').value;
+    const nameInput = document.getElementById('discord-name');
+    const msgInput = document.getElementById('discord-msg');
     const btn = document.getElementById('send-btn');
     const status = document.getElementById('status-msg');
+
+    const name = nameInput.value || "Anonymous_Origin";
+    const message = msgInput.value;
 
     if (!message) {
         status.innerHTML = "⚠️ [ERROR]: Packet body cannot be empty.";
@@ -82,31 +85,29 @@ function sendToDiscord() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
-    }).then(response => {
+    })
+    .then(response => {
         if (response.ok) {
             status.innerHTML = "✅ [SUCCESS]: Packet delivered to core.";
             status.style.display = "block";
             status.style.color = "#fff";
             status.style.background = "rgba(255, 255, 255, 0.1)";
-            document.getElementById('discord-msg').value = "";
-            document.getElementById('discord-name').value = "";
+            msgInput.value = "";
+            nameInput.value = "";
         } else {
             throw new Error();
         }
-    }).catch(() => {
+    })
+    .catch(() => {
         status.innerHTML = "❌ [FAILURE]: Handshake failed.";
         status.style.display = "block";
         status.style.color = "#ff3e3e";
         status.style.background = "rgba(255, 62, 62, 0.1)";
-    }).finally(() => {
+    })
+    .finally(() => {
         btn.disabled = false;
         btn.innerText = "Execute Submission";
     });
 }
 </script>
 {% endraw %}
-        btn.disabled = false;
-        btn.innerText = "Execute Submission";
-    });
-}
-</script>
