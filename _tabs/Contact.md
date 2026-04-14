@@ -7,7 +7,7 @@ order: 2
 
 <div style="margin-top: 20px; font-family: sans-serif;">
     <p style="color: #888; line-height: 1.6;">
-        If you have professional inquiries regarding binary exploitation, malware analysis, or reverse engineering, please use the portal below. Direct transmissions are routed to my Discord.
+        If you have professional inquiries regarding binary exploitation, malware analysis, or reverse engineering, please use the portal below. Direct transmissions are routed to my secure endpoint.
     </p>
 
     <div style="margin-top: 40px; border: 1px solid #333; padding: 25px; border-radius: 8px; background: rgba(255,255,255,0.02);">
@@ -51,10 +51,6 @@ order: 2
             <a href="https://t.me/vaylobat" target="_blank" style="text-decoration: none; color: #fff; border: 1px solid #333; padding: 10px 18px; border-radius: 4px; font-size: 0.75rem; transition: 0.3s;" onmouseover="this.style.borderColor='#0088cc'" onmouseout="this.style.borderColor='#333'">
                 TELEGRAM
             </a>
-
-            <div style="color: #888; border: 1px solid #222; padding: 10px 18px; border-radius: 4px; font-size: 0.75rem;">
-                DISCORD: vaylo.bat
-            </div>
             
         </div>
     </div>
@@ -118,4 +114,3 @@ function sendToDiscord() {
     });
 }
 </script>
-
