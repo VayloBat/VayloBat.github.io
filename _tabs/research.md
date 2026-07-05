@@ -60,8 +60,6 @@ order: 1
     <div style="margin-top: 15px;"><span class="tag">#Hardware</span></div>
   </a>
 
-</div>
-<div class="research-container">
   
   <a href="{{ '/posts/hitv-mod-analysis-part1/' | relative_url }}" target="_blank" class="pwn-card">
     <div>
@@ -71,8 +69,6 @@ order: 1
     <div style="margin-top: 15px;"><span class="tag">#AppReverseEngineering</span></div>
   </a>
 
-</div>
-<div class="research-container">
   
   <a href="{{ '/posts/hitv-mod-analysis-part2/' | relative_url }}" target="_blank" class="pwn-card">
     <div>
@@ -82,8 +78,6 @@ order: 1
     <div style="margin-top: 15px;"><span class="tag">#AppReverseEngineering</span></div>
   </a>
   
-
-<div class="research-container">
   
   <a href="{{ '/posts/lorawan-parser-vulnerability-analysis/' | relative_url }}" target="_blank" class="pwn-card">
     <div>
