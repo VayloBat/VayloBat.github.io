@@ -82,9 +82,7 @@ order: 1
       <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#App</span>
       <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#ReverseEngineering</span>
     </div>
-  </a>
-
-</div>
+  
 
 <div class="research-container">
   
