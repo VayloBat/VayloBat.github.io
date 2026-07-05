@@ -7,13 +7,13 @@ order: 1
 
 
 <style>
-  .research-container {
+  .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
-    margin-top: 20px;
+    margin-bottom: 40px;
   }
-  .res-card {
+  .pwn-card {
     border: 1px solid #333;
     padding: 20px;
     border-radius: 12px;
@@ -23,25 +23,32 @@ order: 1
     text-decoration: none !important;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     height: 100%;
   }
-  .res-card:hover {
+  .pwn-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 255, 0, 0.1);
     border-color: #00FF00;
   }
-  .res-title {
+  .category-title {
     color: #00FF00;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
     font-family: 'Fira Code', monospace;
-    margin: 0 0 10px 0;
-    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
   }
-  .res-desc {
-    color: #ccc;
-    font-size: 0.9rem;
-    line-height: 1.5;
+  .tag {
+    background: #333;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7em;
+    color: #00FF00;
   }
 </style>
+
 
 <div class="research-container">
   
