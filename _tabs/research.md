@@ -52,56 +52,45 @@ order: 1
 
 <div class="research-container">
   
-  <a href="{{ '/posts/embedded-insecurity-zte-modem/' | relative_url }}" class="res-card">
-    <h3 class="res-title">🛡️ ZTE Modem Research</h3>
-    <p class="res-desc">
-      Dissecting Forgotten Devices: A Deep Dive Into ZTE Modem Architecture Analysis (Part 1).
-    </p>
-    <div style="margin-top: auto; padding-top: 15px;">
-      <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#Hardware</span>
-      <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#Exploitation</span>
+  <a href="{{ '/posts/embedded-insecurity-zte-modem/' | relative_url }}" target="_blank" class="pwn-card">
+    <div>
+      <h3 style="color: #00FF00; margin: 0;">🛡️ ZTE Modem Research</h3>
+      <p style="font-size: 0.85em; color: #bbb;"> Dissecting Forgotten Devices: A Deep Dive Into ZTE Modem Architecture Analysis (Part 1).</p>
     </div>
+    <div style="margin-top: 15px;"><span class="tag">#Hardware</span></div>
   </a>
 
 </div>
 <div class="research-container">
   
-  <a href="{{ '/posts/hitv-mod-analysis-part1/' | relative_url }}" class="res-card">
-    <h3 class="res-title">📱 HiTV Modded APK Architecture Research</h3>
-    <p class="res-desc">
-      Security Research: Deep Dive into HiTV Modded APK Architecture (Part1).
-    </p>
-    <div style="margin-top: auto; padding-top: 15px;">
-      <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#App</span>
-      <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#ReverseEngineering</span>
+  <a href="{{ '/posts/hitv-mod-analysis-part1/' | relative_url }}" target="_blank" class="pwn-card">
+    <div>
+      <h3 style="color: #00FF00; margin: 0;">📱 HiTV Modded APK Architecture Research</h3>
+      <p style="font-size: 0.85em; color: #bbb;"> Security Research: Deep Dive into HiTV Modded APK Architecture (Part1).</p>
     </div>
+    <div style="margin-top: 15px;"><span class="tag">#AppReverseEngineering</span></div>
   </a>
 
 </div>
 <div class="research-container">
   
-  <a href="{{ '/posts/hitv-mod-analysis-part2/' | relative_url }}" class="res-card">
-    <h3 class="res-title">📱 HiTV Modded APK Architecture Research(part2)</h3>
-    <p class="res-desc">
-      Security Research: Deep Dive into HiTV Modded APK Architecture (Part2).
-    </p>
-    <div style="margin-top: auto; padding-top: 15px;">
-      <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#App</span>
-      <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#ReverseEngineering</span>
+  <a href="{{ '/posts/hitv-mod-analysis-part2/' | relative_url }}" target="_blank" class="pwn-card">
+    <div>
+      <h3 style="color: #00FF00; margin: 0;">📱 HiTV Modded APK Architecture Research(part2)</h3>
+      <p style="font-size: 0.85em; color: #bbb;"> Security Research: Deep Dive into HiTV Modded APK Architecture (Part2).</p>
     </div>
+    <div style="margin-top: 15px;"><span class="tag">#AppReverseEngineering</span></div>
+  </a>
   
 
 <div class="research-container">
   
-  <a href="{{ '/posts/lorawan-parser-vulnerability-analysis/' | relative_url }}" class="res-card">
-    <h3 class="res-title">lorawan-parser-vulnerability-analysis</h3>
-    <p class="res-desc">
-      Security Research: lorawan-parser-vulnerability-analysis.
-    </p>
-    <div style="margin-top: auto; padding-top: 15px;">
-      <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#analysis</span>
-      <span style="background: #333; color: #00FF00; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem;">#ics</span>
+  <a href="{{ '/posts/lorawan-parser-vulnerability-analysis/' | relative_url }}" target="_blank" class="pwn-card">
+    <div>
+      <h3 style="color: #00FF00; margin: 0;">lorawan-parser-vulnerability-analysis</h3>
+      <p style="font-size: 0.85em; color: #bbb;">  Security Research: lorawan-parser-vulnerability-analysis.</p>
     </div>
+    <div style="margin-top: 15px;"><span class="tag">#analysisICS</span></div>
   </a>
 
 </div>
